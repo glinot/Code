@@ -1,0 +1,196 @@
+<link href="./css/sportman_training_tofill.css" rel="stylesheet">
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse3"><h2>INFORMATIONS</h2></a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+                <h3> Intitulé : </h3>
+                <div id="title_return"></div>
+                <h3> Date : </h3>
+                <div id="date_return"></div>
+                <h3> Heure de début : </h3>
+                <div id="horaire_deb_return"></div>
+                <h3> Heure de fin : </h3>
+                <div id="horaire_fin_return"></div>
+                <h3> Objectif : </h3>
+                <div id="objectives_return"></div>
+                <h3> Procédés d'entraînement : </h3>
+                <div id="procede_return"></div>
+                <h3> Milieu de pratique : </h3>
+                <div id="milieu_return"></div>
+                <h3> Moyen d'entrainement : </h3>
+                <div id="moyen_return"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>OBLIGATOIRE</h2></div>
+    <div class="panel-body"><h3>Evaluation de l'objectif</h3>
+        <div id="eval_objective" class="rating-section objective">
+            <i index="0" class="fa fa-star" aria-hidden="true"></i>
+            <i index="1" class="fa fa-star" aria-hidden="true"></i>
+            <i index="2" class="fa fa-star" aria-hidden="true"></i>
+            <i index="3" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="4" class="fa fa-star-o" aria-hidden="true"></i>
+        </div>
+
+        <h3>Indice de fatigue</h3>
+
+
+        <h4>Sensations
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Sensations">?
+            </button>
+        </h4>
+
+        <!-- Modal -->
+        <div id="Sensations" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Echelle sensations</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                        <ul>
+                            <li>1. Epuisé, envie de ne rien faire dans la journée</li>
+                            <li>2. Aucune force, besoin de récupérer</li>
+                            <li>3. Mauvaises sensations dans le bateau, nonchalance</li>
+                            <li>4. Limité dans l'effort, mal aux bras ou courbatures générales</li>
+                            <li>5. Sensations moyennes, récupération mauvaise</li>
+                            <li>6. Sensations moyennes pour des raisons diverses</li>
+                            <li>7. Plus ou moins bien selon l'instant et les parcours</li>
+                            <li>8. Bonne forme, bonne récupération</li>
+                            <li>9. Bonne forme, bonnes sensations, envie de m'entraîner ou de prendre un départ de compétition</li>
+                            <li>10. Super forme, énorme envie de m'entraîner ou de prendre un départ de compétition, excellentes sensations à l'effort</li>
+                        </ul>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="val_sensations" class="rating-section sensations">
+            <i index="0" class="fa fa-star" aria-hidden="true"></i>
+            <i index="1" class="fa fa-star" aria-hidden="true"></i>
+            <i index="2" class="fa fa-star" aria-hidden="true"></i>
+            <i index="3" class="fa fa-star" aria-hidden="true"></i>
+            <i index="4" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="5" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="6" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="7" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="8" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="9" class="fa fa-star-o" aria-hidden="true"></i>
+        </div>
+
+        <h4>Humeur
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Humeur">?
+            </button>
+        </h4>
+
+        <!-- Modal -->
+        <div id="Humeur" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Echelle humeur</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                        <ul>
+                            <li>1. De très mauvaise humeur</li>
+                            <li>2. Déprimé</li>
+                            <li>3. Irritable</li>
+                            <li>4. Nerveux</li>
+                            <li>5. Anxieux</li>
+                            <li>6. Détendu</li>
+                            <li>7. Calme</li>
+                            <li>8. Très cool</li>
+                            <li>9. Très joyeux</li>
+                            <li>10. De très bonne humeur, très heureux</li>
+                        </ul>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="val_fatigue" class="rating-section humeur">
+            <i index="0" class="fa fa-star" aria-hidden="true"></i>
+            <i index="1" class="fa fa-star" aria-hidden="true"></i>
+            <i index="2" class="fa fa-star" aria-hidden="true"></i>
+            <i index="3" class="fa fa-star" aria-hidden="true"></i>
+            <i index="4" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="5" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="6" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="7" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="8" class="fa fa-star-o" aria-hidden="true"></i>
+            <i index="9" class="fa fa-star-o" aria-hidden="true"></i>
+        </div>
+        
+        <h3>Bilan de séance</h3></h2>
+                <textarea class="form-control" rows="2" id="objectives_text"></textarea>
+    </div>
+      
+</div>
+</div>
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1"><h2>OPTIONNEL</h2></a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+                
+               
+                <h4>Temps à l'intensité cible</h4>
+                <input type="text" class="form-control bfh-number" value="0" id="temps_travail_intensite">
+                <h3>Précision</h3>
+                <h4>Nombre de portes franchies</h4>
+                <input type="text" class="form-control bfh-number" value="0" id="nb_portes_franchies">
+                <h4>Nombre d'erreurs (1 pénalité = 1 erreur)</h4>
+                <input type="text" class="form-control bfh-number" value="0" id="nb_erreurs">
+                <h4>Nombre de pénalités</h4>
+                <input type="text" class="form-control bfh-number" value="0" id="nb_penalites_seance">
+                <h4>Nombre de parcours réalisés</h4>
+                <input type="text" class="form-control bfh-number" value="0" id="nb_parcours_realises">
+                <h4>Nombre de parcours 0</h4>
+                <input type="text" class="form-control bfh-number" value="0" id="nb_parcours_a_zero">
+
+                
+                <h3>Nombre de km</h3>
+                <input type="text" class="form-control bfh-number" value="0" id="nb_km">
+                
+                <h3>FC max</h3>
+                <input type="text" class="form-control bfh-number" value="0" id="fc_max">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <button type="button" class="btn btn-success form-control">Valider</button>
+
+    <script src="js/sportman_tofill.js"></script>

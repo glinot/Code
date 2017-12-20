@@ -1,0 +1,1 @@
+mongoimport --db kanotDB --collection system --file dump.json

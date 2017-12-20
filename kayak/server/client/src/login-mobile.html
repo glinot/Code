@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="/v2/chrome_app/manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <!-- Défini l'encodage de la page HTML -->
+    <meta charset="utf-8">
+    <!-- Permet de régler d'éventuels soucis de dézoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Nom de la page web (visible en haut de l'écran sur l'onglet) -->
+    <title>KaNot</title>
+    <!-- Fichiers CSS utilisés -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <!-- Ne modifier que ceux-ci -->
+    <link href="css/boostrap-custom.css" rel="stylesheet">
+    <link href="./css/login-mobile.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style-youtubebg.css">
+
+
+</head>
+<body>
+
+<div class="container text-center login-form">
+    <h1 id="title-app">KaNote</h1>
+    <div class="row">
+        <div class="form-group register-feature">
+            <label>Nom</label>
+            <input type="email" class="form-control" id="surname">
+        </div>
+        <div class="form-group register-feature">
+            <label>Prénom</label>
+            <input type="email" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label>Adress gmail:</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label>Mot de passe</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <div class="form-group register-feature">
+            <label >Role</label>
+            <select class="form-control" id="role">
+                <option>Sportman</option>
+                <option>Coach</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="validation_button">Connexion</button>
+        <a id="register">S'enregistrer</a>
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="info-login" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="titre"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+</body>
+<script src="./js/jquery.js"></script>
+<script src="./js/jquery.cookie.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="./js/login-mobile.js"></script>
+</html>

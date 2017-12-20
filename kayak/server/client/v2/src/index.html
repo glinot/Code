@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html ng-app="kanoteApp">
+<head>
+
+    <link rel="manifest" href="/v2/chrome_app/manifest.json">
+    <link rel="icon" href="/img/icon.png">
+    <title>KaNote</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.clockpicker.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/animate.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/magic.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/index.css" media="screen,projection"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="stylesheet" href="css/cropper.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+
+<body ng-controller="mainCrtl">
+<div class="navbar-fixed">
+
+
+    <nav class="blue darken-1 ">
+
+        <ul id="slide-out" class="side-nav">
+            <li class="left-align profile" ng-click="goToProfile();" ng-style="backgroundStyle">
+                <img height="100"
+                     id="profile_image"
+                     class="circle left-align"
+                     ng-src="{{me.pictures.profile || '/img/default_profile.png'}}"
+                     alt=""/>
+                <div class="user black-text white-text ">
+                    <div class="row">
+                        <b>{{me.name}} {{me.surname}}</b>
+
+                    </div>
+                    <div class="row">
+                        {{me.email}}
+                    </div>
+                </div>
+
+            </li>
+            <li ng-repeat=" (name , url) in userMenu" ng-click="selectMenuItem(url)"><a href="#!">{{name}}</a></li>
+            <li ng-click="disconnect();"><a href="#!">Déconnexion</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse show-on-large show-on-medium show-on-small"><i
+                class="material-icons" ng-click="openMenu();">menu</i></a>
+
+
+    </nav>
+</div>
+<div ng-include="selectedMenuItem" id="middleContainer">
+
+</div>
+
+
+<!-- Modals-->
+
+
+<!-- Modal Structure -->
+<div id="globalError" class="modal" ng-controller="errorController">
+    <div class="modal-content">
+        <h4>Erreur</h4>
+        <p>{{message}}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="onSuccess();">Ok</a>
+    </div>
+</div>
+<!-- Modal Structure -->
+<div id="modalGoogleError" class="modal">
+    <div class="modal-content">
+        <h4>Erreur d'authentification avec google calendar</h4>
+        <p>
+
+            Kanote a besoin de se connecter a Google calendar pour synchroniser les séances
+            sur l'application et sur votre Agenda Google.
+            Pour se connecter une pop up de google doit apparaitre et proposer la connexion.
+            Si ce n'est pas le cas il faut vérifier que votre navigateur n'ai pas bloqué la popup.
+            Si c'est le cas vous devez la débloquer pour permettre au site de fonctioner correctement.
+        </p>
+        <div>
+
+            <b>Aperçu de la popup :</b>
+            <div class="center-align">
+
+                <img src="/img/google_api.png" class="responsive-img" alt="google api">
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok ! </a>
+    </div>
+</div>
+
+<div id="modalGoogleErrorEmail" class="modal" ng-controller="emailMismatchCrtl">
+    <div class="modal-content">
+        <h4>Erreur de compte</h4>
+        <p>
+
+        <p> Kanote a besoin de se connecter a Google calendar pour synchroniser les scéances
+            sur l'application et sur votre Agenda Google.</p>
+
+        <p> Le compte <b>Kanote</b> sur lequel vous êtes connecté est : <b>{{kanoteEmail}}</b></p>
+        <p> Le compte <b>Gmail</b> sur lequel vous êtes connecté est : <b>{{googleEmail}}</b></p>
+
+
+        <p>Vous devez changer d'utilisateur <b>Gmail</b> et rafraichir la page Kanote.</p>
+
+        <p> Vous devez vous connecter avec l'adresse : <b>{{kanoteEmail}}</b></p>
+
+        </p>
+
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok ! </a>
+    </div>
+</div>
+
+<!-- Modal Remove Item -->
+<div id="modalRemove" class="modal" ng-controller="modalRemoveCrtl">
+    <div class="modal-content">
+        <h4>Supprimer</h4>
+        <p>Voulez vous supprimer cet entrainement ? </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+           ng-click="success();">Valider</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+           ng-click="cancel();">Annuler</a>
+    </div>
+</div>
+
+<!-- Google Client lib on standby -->
+<script src="https://apis.google.com/js/client.js"></script>
+
+<!--Import jQuery before materialize.js-->
+
+<script src="js/js.cookie.js"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/cropper.min.js"></script>
+
+<script type="application/javascript" src="js/moment-with-locales.js"></script>
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+<script src="js/angular-chartist.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.clockpicker.js"></script>
+
+<script type="application/javascript" src="js/index.js"></script>
+<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxsi7PPG_eyUdGA7jfXIFbguoQB8o0mrk&signed_in=true&libraries=places" async defer></script-->
+</body>
+</html>
+

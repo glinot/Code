@@ -1,0 +1,470 @@
+/* Last div */
+.last-div {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/*
+User feature on left menu
+*/
+
+/* Permet de créer une police d'écriture intitulée "expressway"
+ * dont le fichier est enregisré à l'url envoyé */
+@font-face {
+    font-family: expressway;
+    src: url("../fonts/expressway.ttf");
+}
+
+/* Permet de créer une police d'écriture intitulée "Roboto"
+ * dont le fichier est enregisré à l'url envoyé */
+@font-face {
+    font-family: Roboto;
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
+/* Pour tout (*), le texte sera écrit en police Roboto */
+* {
+    font-family: Roboto;
+}
+
+/* Lorsque le menu sur le côté est visible...
+ * @top : distance au haut de la page
+ * @position : type de position. (ici fixed : la position sera fixe par rapport au haut de la page)
+ * @background-color : couleur du fond
+ * @height : hauteur (ici 100% : elle prendra toute la page)
+ * @width : largeur
+ * @transition : type de transition entre #side-wrapper et #side-wrapper.hidded
+ * Les différents préfixes (-webkit-, -moz-, -o-, '', permettent de faire fonctionner cette fonction sur tous les navigateurs)
+ * -webkit- : Chrome, Safari
+ * -moz- : Mozilla Firefox
+ * -o- : Opera
+ * '' : Edge, Internet Explorer
+ * @z-index : position relative de la div vis à vis des autres ayant cette attribut. Plus le z-index est élevé, plus il sera devant. */
+
+#side-wrapper {
+    top: 50px;
+    position: fixed;
+    background-color: rgba(32, 135, 233, 0.8);
+    color: white;
+    height: 100%;
+    width: 300px;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    z-index: 4;
+}
+
+/* Lorsque le menu est caché
+ * @transform: ici, translate permet de cacher le menu de l'autre côté de la page web (donc non affiché) */
+
+#side-wrapper.hidded {
+    height: 100%;
+    width: 300px;
+    -webkit-transform: translate(-100%, 0);
+    -moz-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
+    -ms-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+/* Caractéristiques de la class "burger-menu"
+ * @position : positionnement de la class sur la page web. Ici, absolute, donc position absolu par rapport au haut de la page
+ * @transform : translation de (x,y) sur la page
+ * @transition : CF #side-wrapper */
+.burger-menu {
+    height: 100%;
+    width: 75px;
+    top: 10px;
+    position: absolute;
+    transform: translate(-25px, 0);
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+}
+
+/* Lorsque le burger-menu est actif
+ * On translate les éléments de 5 pixels - ils deviennent donc plus visibile qu'avant */
+.burger-menu.active {
+    -moz-transform: translate(-5px, 0);
+    -o-transform: translate(-5px, 0);
+    -ms-transform: translate(-5px, 0);
+    transform: translate(-5px, 0);
+}
+
+/* Chaque objet de la liste burger (identifié par "class = "burger-item" ")
+ * @margin-bottom : marge en dessous
+ * @box-shadow : créer une ombre vers l'intérieur (permet de remplir l'image d'une couleur)' */
+.burger-item {
+    height: 10%;
+    width: 90%;
+    background-color: white;
+    margin-bottom: 5px;
+    box-shadow: whitesmoke;
+}
+
+/* Bandeau gris en haut de la paxe
+ * @position : Ici la position est "fixe" vis à vis du haut (car c'est le seul attribut de l'espace défini) */
+.header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(8, 145, 233, 0.9);
+    top: 0px;
+    z-index: 5;
+    box-shadow: 0 -11px 10px 11px;
+}
+
+/* Lorsque l'écran a une largeur inférieure à 768 pixels (pratique lors de changement de taille de navigateur ou petit écran) */
+@media screen and (max-width: 768px) {
+    .header {
+        height: 60px;
+    }
+
+    .burger-menu {
+        top: 20px;
+    }
+
+    #side-wrapper {
+        top: 60px;
+    }
+}
+
+/* Les icones pour le menu ont une largeur de 50 pixels */
+.img-icon {
+    width: 50px;
+    height: 20px;
+}
+
+/* Modification de l'icone quand on sélectionne un truc dans le menu */
+.side-menu > li.active .img-icon {
+    width: 60px;
+    height: 30px;
+    -ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(20deg); /* Chrome, Safari, Opera */
+    transform: rotate(20deg);
+}
+
+/* Pour les éléments de la liste de la classe side-menu
+ * @cursor : apparence du curseur */
+.side-menu > li {
+    cursor: pointer;
+    /*margin-top: 3px;*/
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Pour les attributs des éléments de la liste de la classe side-menu
+ * @border-radius : pas de bordure */
+.side-menu > li > a {
+    background-color: rgba(69, 186, 252, 0.42);
+    border-radius: 0px;
+    color: whitesmoke;
+}
+
+/* Pour l'attribut actifs parmis les éléments de la liste de la classe side-menu */
+.side-menu > li > a:hover, .side-menu > li.active > a, .side-menu > li.active > a:hover {
+    background-color: #17212a;
+    border-radius: 0px;
+    color: white;
+}
+
+/* Pour toutes les balises a présentes dans la class .profile-section de la class .side-menu
+ * ça ne sert qu'à retirer le fond déjà présent pour le menu choisi lors du a:hover */
+.side-menu > li.profile-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+
+}
+
+.side-menu > li.user-feature {
+    display: none;
+}
+
+.side-menu > .profile-section > a, .side-menu > .profile-section > a:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+.text-profil {
+    color: white;
+}
+
+#main-container {
+    margin-top: 60px;
+}
+
+#dark-div {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    top: 0;
+    z-index: 3;
+}
+
+.supprimer {
+
+    background-image: linear-gradient(to bottom, #f3f3f3 0, #f3f3f3 100%);
+    font-family: "fantasy";
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 0 23px -8px rgba(0, 0, 0, 1);
+    margin: 0;
+    -webkit-text-stroke: .2px #000;
+    text-align: center;
+
+}
+
+#dark-div.hidded {
+    opacity: 0;
+    display: none;
+}
+
+.img-profile {
+    height: 100px;
+    border: 3px solid white;
+}
+
+.img-profile-xs {
+    height: 200px;
+    border: 3px solid white;
+    box-shadow: 0px 0px 5px 0px black;
+}
+
+.jumbotron.profile-header {
+    /*background-color: #2980b9;*/
+    background: url("../img/back.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 2px;
+    border: 3px solid whitesmoke;
+}
+
+#name-profile {
+    color: white;
+}
+
+.modify {
+    cursor: pointer;
+}
+
+.stats-canvas {
+    height: 500px;
+    width: 600px;
+    padding: 30px;
+}
+
+.img-training {
+    height: 20px;
+}
+
+.checkbox {
+    display: inline-block;
+    border-radius: 100%;
+    border: solid;
+}
+
+.checkbox.active {
+    border-color: #1a743d;
+}
+
+.checkbox.disabled {
+    border-color: #c0392b;
+}
+
+.checkbox.active .active-item {
+    color: #1a743d;
+}
+
+.checkbox.active .disabled-item {
+    display: none;
+}
+
+.checkbox > div > i {
+    font-size: 20px;
+}
+
+.checkbox.disabled .disabled-item {
+    color: #c0392b;
+}
+
+.checkbox.disabled .active-item {
+    display: none;
+}
+
+.check-wrapper {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.hashtag {
+    margin-left: 4px;
+    height: 30px;
+}
+
+#hashtag-group {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.list-wrapper {
+    margin-top: 30px;
+}
+
+.user-name {
+    display: inline-block;
+}
+
+.user-img {
+    display: inline-block;
+}
+
+.add_user {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-top: 10px;
+}
+
+.model {
+    display: none;
+}
+
+#modal-feel .modal-header {
+    height: 100px;
+    background-color: rgba(15, 139, 233, 0.7);
+}
+
+#modal-feel .modal-footer {
+    height: 50px;
+    background-color: rgba(15, 139, 233, 0.7);
+}
+
+#modal-feel .modal-content {
+    border-radius: 2px;
+    border-color: transparent;
+}
+
+.rating-section {
+    font-size: 45px;
+    letter-spacing: 5px;
+}
+
+.rating-section > i {
+    cursor: pointer;
+}
+
+#modal-feel .submit-btn {
+    font-weight: 300;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/*Stats Selector*/
+.selector-stats-wide {
+    display: block;
+
+}
+
+.selector-wide i {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.selector-wide > h3 {
+    display: inline-block;
+}
+
+.p-inline {
+    display: inline-block;
+}
+
+.img-notify {
+    border: solid 2px white;
+    width: 50px;
+}
+
+/* tour*/
+.popover.tour {
+    border-radius: 0;
+    background-color: #2ecc71;
+
+}
+
+.popover.tour button {
+    border-radius: 100px;
+    background: transparent;
+    border-color: whitesmoke;
+    border: solid 2px whitesmoke;
+    color: white;
+}
+
+.popover.tour .popover-header {
+    border-radius: 0;
+    background-color: #2c3e50;
+    height: 30px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: Roboto;
+    font-size: large;
+    color: white;
+}
+
+.popover.tour .popover-header h3 {
+    border-radius: 0;
+    background-color: transparent;
+    border-width: 0;
+}
+
+#tr-welcome {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    z-index: 2;
+
+}
+
+#tr-welcome > img {
+    height: 150px;
+    border: solid 3px white;
+}
+
+#tr-welcome .tour-backdrop {
+    opacity: 0.9;
+}
+
+input[type="text"],
+input[type="time"]
+{
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+    border-radius: 0;
+    height :40px
+
+}
+
+input[type="text"]:focus,
+input[type="text"].focus
+input[type="time"]:focus,
+input[type="time"].focus
+
+{
+    border-bottom: solid 2px #969696;
+}

@@ -1,0 +1,75 @@
+
+<div class="row">
+    <div id="feedback" class="col-lg-6">
+        <h3>Type : </h3>
+            <div id="training-type"></div>
+        <h3>Date : </h3>
+            <div id="training-date"></div>
+        <h3>Heure de début : </h3>
+            <div id="training-debut"></div>
+        <h3>Durée : </h3>
+            <div id="training-delay"></div>
+        <h3>Description : </h3>
+            <div id="training-description"></div>
+        <h3>Objectif : </h3>
+        <div id="training-objective"></div>
+        <div id="feedback_sportman" class="hidden">
+            <h2>OBLIGATOIRE</h2>
+            <h3>Evaluation de l'objectif</h3>
+            <div class="rating-section objective"></div>
+            <h3>Indice de fatigue</h3>
+            <h4>Sensations</h4>
+            <div class="rating-section sensations"></div>
+            <h4>Humeur</h4>
+            <div class="rating-section humeur"></div>
+
+            <h2>OPTIONNEL</h2>
+            <h3>Bilan de séance</h3>
+            <div id="bilan_seance"></div>
+            <h3>Charge perçue</h3>
+            <h4>Temps de travail à l'intensité</h4>
+            <div id="temps_travail_intensite"></div>
+            <h4>Difficulté</h4>
+            <div id="difficulte"></div>
+            <h3>Précision</h3>
+            <h4>Nombre de portes franchies</h4>
+            <div id="nb_portes_franchies"></div>
+            <h4>Nombre d'erreurs</h4>
+            <div id="nb_erreurs"></div>
+            <h4>Nombre de parcours réalisés</h4>
+            <div id="nb_parcours_realises"></div>
+            <h4>Nombre de parcours à 0</h4>
+            <div id="nb_parcours_0"></div>
+            <h4>Nombre de pénalités sur la séance</h4>
+            <div id="nb_penalites_seance"></div>
+            <h3>Nombre de km</h3>
+            <div id="nb_kilometres"></div>
+            <h3>FC moyenne</h3>
+            <div id="fc_moyenne"></div>
+            <h3>FC max</h3>
+            <div id="fc_max"></div>
+        </div>
+        <div id="no_feedback" class="hidden">
+            <h3>Le sportif n'a pas encore rempli son feedback pour cette séance</h3>
+        </div>
+    </div>
+    <div class="col-lg-6">
+
+        <h3>Sportifs ayant participé à la séance :</h3>
+        <div class="list-wrapper">
+            <!-- EXEMPLE  -->
+            <ul class="list-group" id="sportman-list">
+                <li class="list-group-item model" id="model-sportman">
+                    <div class="user-wrapper">
+                        <div class="user-img"><img class="user-img img-circle" src="" height="50"/></div>
+                        <div class="user-name"><a class="user-name-text"></a><span>     </span><a
+                                class="user-surname-text"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="js/coach_trainingstats.js"></script>

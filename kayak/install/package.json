@@ -1,0 +1,14 @@
+{
+  "name": "install",
+  "version": "1.0.0",
+  "description": "install script for kanote ",
+  "main": "admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gregoire Linot",
+  "license": "DWTF",
+  "dependencies": {
+    "mongolian": "^0.1.18"
+  }
+}

@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="INSAWorld.Views.Game.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:INSAWorld.Views.Game"
+      xmlns:viewModel="clr-namespace:INSAWorld.ViewModel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <local:UserInfoControl Grid.Row="0" Grid.Column="0" DataContext="{Binding Player1}" />
+
+        <ItemsControl Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Tiles}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding Game.Map.Size}" Columns="{Binding Game.Map.Size}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding DataContext.ActionCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" CommandParameter="{Binding .}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                             
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border>
+                                                <Border.Style>
+                                                    <Style TargetType="{x:Type Border}">
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Opacity" Value="0.8" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="False">
+                                                                <Setter Property="Opacity" Value="1" />
+                                                            </Trigger>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding IsReachable }" Value="True" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <MultiDataTrigger.Setters>
+                                                                    <Setter Property="Opacity" Value="0.6" />
+                                                                </MultiDataTrigger.Setters>
+                                                            </MultiDataTrigger>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding IsBestMove }" Value="True" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <MultiDataTrigger.Setters>
+                                                                    <Setter Property="BorderBrush" Value="Red" />
+                                                                    <Setter Property="BorderThickness" Value="2" />
+                                                                </MultiDataTrigger.Setters>
+                                                            </MultiDataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <Grid VerticalAlignment="Center">
+                                                    <Image Source="{Binding Texture}" />
+                                                    <ContentPresenter />
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+
+                        <ItemsControl ItemsSource="{Binding Units}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding WarriorAvatar}" Margin="2" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <local:UserInfoControl Grid.Row="0" Grid.Column="2" DataContext="{Binding Player2}" />
+
+        <local:UserScoreControl Grid.Row="1" Grid.Column="0" DataContext="{Binding Player1}" />
+
+        <materialDesign:Card Grid.Row="1" Grid.Column="1">
+            <Grid Margin="9">
+                <Button HorizontalAlignment="Left" Command="{Binding NextTurnCommand}" IsEnabled="{Binding IsEnabled}">
+                    NEXT TURN
+                </Button>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Text="{Binding Game.CurrentTurn}" />
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Text="/" />
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Text="{Binding Game.MaximumNumberTurns}" />
+                </StackPanel>
+
+                <materialDesign:PopupBox HorizontalAlignment="Right" PlacementMode="TopAndAlignCentres" StaysOpen="False">
+                    <StackPanel>
+                        <Button Command="{Binding SaveGameDialogCommand}" IsEnabled="{Binding IsEnabled}">
+                            Save game
+                        </Button>
+
+                        <Button Command="{Binding LoadGameDialogCommand}" IsEnabled="{Binding IsEnabled}">
+                            Load game
+                        </Button>
+
+                        <Button Command="{Binding ExitGameDialogCommand}">
+                            Exit game
+                        </Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </Grid>
+        </materialDesign:Card>
+
+        <local:UserScoreControl Grid.Row="1" Grid.Column="2" DataContext="{Binding Player2}" />
+    </Grid>
+</UserControl>

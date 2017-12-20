@@ -1,0 +1,79 @@
+@font-face {
+    font-family: sportfont;
+    src: url("../fonts/sportfont.ttf");
+}
+
+#background {
+    background-color: black;
+    background-position: center center;
+    left: -5%;
+    position: fixed;
+    top: 0;
+    width: 110%;
+    height: 100%;
+    z-index: -2;;
+    opacity: 50;
+
+}
+
+.form-control {
+    background: transparent;
+    border: solid 2px white;
+    color: white;
+    border-radius: 0;
+
+}
+
+.form-login {
+    padding: 10em;
+    height: 40px;
+}
+
+.label-control {
+    color: white;
+}
+
+.background-overlay {
+
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 110%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.40;
+}
+
+.login-control {
+    display: inline-block;
+
+    font-weight: bold;
+}
+
+.app-title {
+    font-family: sportfont;
+    font-size: 80px;
+    color: white;
+    padding: 0.6em;
+
+}
+.button-connect{
+    width: 100%;
+    height: 34px;
+    font-weight: bold;
+}
+#last-error{
+    color: red;
+}
+#role-select > option{
+    background-color: black;
+    font-weight: bold;
+}
+
+
+
+
+
+#error-login{
+
+}

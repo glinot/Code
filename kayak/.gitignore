@@ -1,0 +1,10 @@
+server/node_modules/
+server/logger/node_modules/
+.idea
+node_modules/
+old-db
+dbfiles
+cordova
+test
+server/uploads
+install/node_modules

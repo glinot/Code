@@ -1,0 +1,21 @@
+@font-face {
+    font-family: sportfont;
+    src: url("../fonts/sportfont.ttf");
+}
+#title-app{
+    font-size: 50px;
+    font-family: sportfont;
+}
+#register{
+    cursor: pointer;
+}
+.login-form .form-control{
+    border-radius:0 ;
+    height: 40px;
+    font-size: 20px;
+
+}
+.login-form .form-control input{
+    display: inline-block;
+
+}

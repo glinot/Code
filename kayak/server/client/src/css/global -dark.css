@@ -1,0 +1,384 @@
+/* A SAVOIR
+ * '[.]xxxxx' désigne le fait que xxxxx est une "class"
+ * '[#]xxxxx' désigne le fait que xxxxx est un "id"
+ */
+
+/*
+ * Permet de créer une police d'écriture intitulée "expressway"
+ * dont le fichier est enregisré à l'url envoyé
+ */
+@font-face{
+    font-family: expressway;
+     src:url("../fonts/expressway.ttf");
+}
+
+/*
+ * Permet de créer une police d'écriture intitulée "Roboto"
+ * dont le fichier est enregisré à l'url envoyé
+ */
+@font-face{
+	font-family: Roboto;
+	src:url("../fonts/Roboto-Regular.ttf");	
+}
+
+/*
+ * Pour tout (*), le texte sera écrit en polic Roboto
+ */
+*{
+	font-family: Roboto;
+}
+/*
+ * Lorsque le menu sur le côté est visible...
+ * @top : distance au haut de la page
+ * @position : type de position. (ici fixed : la position sera fixe par rapport au haut de la page)
+ * @background-color : couleur du fond
+ * @height : hauteur (ici 100% : elle prendra toute la page)
+ * @width : largeur
+ * @transition : type de transition entre #side-wrapper et #side-wrapper.hidded
+ * Les différents préfixes (-webkit-, -moz-, -o-, '', permettent de faire fonctionner cette fonction sur tous les navigateurs)
+ * -webkit- : Chrome, Safari
+ * -moz- : Mozilla Firefox
+ * -o- : Opera
+ * '' : Edge, Internet Explorer
+ * @z-index : position relative de la div vis à vis des autres ayant cette attribut. Plus le z-index est élevé, plus il sera devant.
+ */
+	#side-wrapper{
+		top :50px;
+		position:fixed;
+		background-color:#2c3e50;
+		height:100%;
+		width : 300px;
+		 -webkit-transition: 0.2s ease-in-out;
+
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+	z-index: 1;
+}
+
+/*
+ * Lorsque le menu est caché
+ * @transform: ici, translate permet de cacher le menu de l'autre côté de la page web (donc non affiché)
+ */
+#side-wrapper.hidded{
+	height: 100%;
+	width: 300px;
+	-webkit-transform: translate(-100%,0);
+    -moz-transform: translate(-100%,0);
+    -o-transform: translate(-100%,0);
+    -ms-transform: translate(-100%,0);
+    transform: translate(-100%,0);	
+}
+
+/*
+ * Caractéristiques de la class "burger-menu"
+ * @position : positionnement de la class sur la page web. Ici, absolute, donc position absolu par rapport au haut de la page
+ * @transform : translation de (x,y) sur la page
+ * @transition : CF #side-wrapper
+ */
+.burger-menu{
+	height: 100%;
+	width: 40px;
+	top: 15px;
+	position: absolute; 
+	transform: translate(-25px,0);
+	-webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;	
+}
+
+/*
+ * Lorsque le burger-menu est actif
+ * On translate les éléments de 5 pixels - ils deviennent donc plus visibile qu'avant
+ */
+.burger-menu.active{
+	-moz-transform: translate(-5px,0);
+    -o-transform: translate(-5px,0);
+    -ms-transform: translate(-5px,0);
+    transform: translate(-5px,0);
+}
+
+/*
+ * Chaque objet de la liste burger (identifié par "class = "burger-item" ")
+ * @margin-bottom : marge en dessous
+ * @box-shadow : créer une ombre vers l'intérieur (permet de remplir l'image d'une couleur)'
+ * POURQUOI ????????????????????????????????????????????????????????????????????????????????
+ */
+.burger-item{
+	height: 8%;
+	width: 90%;
+	background-color: white;
+	margin-bottom: 3px;
+	box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset;
+}
+
+/*
+ * Bandeau gris en haut de la paxe
+ * @position : Ici la position est "fixe" vis à vis du haut (car c'est le seul attribut de l'espace défini)
+ */
+.header{
+	position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #17212a;
+	top :0px;
+	z-index: 2;
+     box-shadow: 0 -11px 10px 11px;
+}
+
+/*
+ * Lorsque l'écran a une largeur inférieure à 768 pixels (pratique lors de changement de taille de navigateur ou petit écran)
+ */
+@media screen and (max-width:768px){
+	.header{ 
+		height: 60px;
+	}
+	.burger-menu{ 
+		top: 20px;
+	}
+	#side-wrapper{
+		top: 60px;
+	}
+}
+
+/*
+ * Les icones pour le menu ont une largeur de 50 pixels 
+ */
+.img-icon{
+	width:50px;
+}
+
+
+
+/*
+ * Pour les éléments de la liste de la classe side-menu
+ * @cursor : apparence du curseur
+ */
+.side-menu >li{
+	cursor : pointer;
+	/*margin-top: 3px;*/
+	padding: 0px;
+	margin: 0px;
+}
+
+/*
+ * Pour les attributs des éléments de la liste de la classe side-menu
+ * @border-radius : pas de bordure
+ */
+.side-menu >li > a {
+	background-color: #32485B;
+	border-radius: 0px;
+	color : #7f8c8d;
+}
+
+
+/*
+ * Pour l'attribut actifs parmis les éléments de la liste de la classe side-menu
+ */
+.side-menu >li > a:hover,
+.side-menu > li.active > a,
+.side-menu > li.active > a:hover {
+	background-color: #17212a;
+	border-radius: 0px;
+	color: white;
+}
+
+/*
+ * Pour toutes les balises a présentes dans la class .profile-section de la class .side-menu
+ * POURQUOI ????????????????????????????????????????????????
+ * ça ne sert qu'à retirer le fond déjà présent pour le menu choisi lors du a:hover
+ */
+.side-menu > .profile-section > a ,
+.side-menu > .profile-section > a:hover
+{
+	background-color: transparent;
+	cursor: default;
+}
+
+/*
+ * Pour la class .text-profil
+ */
+.text-profil{
+	color: white;
+}
+
+/*
+ * Pour la div main-container
+ * @overflow-y : comment gère-t-on ce qui dépasse en y ? Ici, "hidden", donc on ne l'affiche pas
+ */
+#main-container{
+	margin-top:60px;
+	overflow-y: hidden;
+}
+
+/*
+ * Calque tout noir qui apparaît lorsque l'on click sur le menu
+ * @background-color : rgba(r,g,d,o), o l'opacité 
+ */
+#dark-div{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color:  rgba(0, 0, 0, 0.8);
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+	top: 0;
+	z-index: 0;
+}
+
+/*
+ * Lorsque l'on n'affiche pas le calque noir
+ */
+#dark-div.hidded{
+	opacity: 0;
+	display: none;
+}
+
+/*
+ * Pour l'image de profile
+ */
+.img-profile{
+	height: 100px;
+	border: 3px solid white;
+}
+
+/*
+ * Pour l'image de profil sur petit écran
+ */
+.img-profile-xs{
+	height :200px;
+	
+	border : 3px solid white;
+	box-shadow: 0px 0px 5px 0px black;
+}
+
+/*
+ * Fond derrière l'image de profil, sur la page profil.html
+ */
+.jumbotron.profile-header{
+	/*background-color: #2980b9;*/
+	background: url("../img/back.png") no-repeat center center fixed; 
+ 	 -webkit-background-size: cover;
+ 	 -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+	border-radius: 2px;	
+	border :3px solid whitesmoke;
+
+}
+
+/*
+ *
+ */
+#name-profile{
+	color:white;
+}
+
+/*
+ * @cursor: Type de curseur pour la souris
+ */
+.modify{
+	cursor: pointer;	
+}
+
+/*
+ * @padding : marge
+ */
+.stats-canvas{
+	height: 500px;
+	width :600px;
+	padding:30px;
+}
+
+/*
+ *
+ */
+.img-training{
+		height: 20px;	
+}
+
+/*
+ *
+ */
+.checkbox{
+	display: inline-block;
+	border-radius: 100%;
+	border :solid;	
+}
+
+/*
+ *
+ */
+.checkbox.active{
+	border-color: #27ae60;
+}
+
+/*
+ *
+ */
+.checkbox.disabled{
+	border-color: #c0392b;
+}
+
+/*
+ *
+ */
+.checkbox.active .active-item{
+	color : #27ae60;	
+}
+
+/*
+ *
+ */
+.checkbox.active .disabled-item{
+	display: none;	
+}
+
+/*
+ *
+ */
+.checkbox > div > i {
+	font-size: 20px;
+}
+
+/*
+ *
+ */
+.checkbox.disabled .disabled-item{
+	color : #c0392b;
+}
+
+/*
+ *
+ */
+.checkbox.disabled .active-item{
+	display: none;	
+}
+
+/*
+ *
+ */
+.check-wrapper{
+	height: 20px;
+	width :20px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/*
+ *
+ */
+.hashtag{
+	margin-left: 4px;
+	height : 30px;
+}
+
+/*
+ *
+ */
+#hashtag-group{
+	font-size: 20px;
+	margin-bottom: 3px;
+}

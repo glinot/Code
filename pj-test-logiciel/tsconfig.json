@@ -1,0 +1,11 @@
+{
+    "files": [
+        "src/main.ts"
+    ],
+    "compileOnSave": true,
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "esNext"
+    }
+}

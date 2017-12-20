@@ -1,0 +1,91 @@
+<div class="container" ng-controller="statsCrtl">
+
+
+    <div class="row center-align">
+        <div class="col s12 m3 offset-m1 z-depth-1 overview hoverable simple-graph"
+             ng-repeat="(wide , elem) in simpleView">
+            <h2 class="center-align title">{{elem.name}}</h2>
+            <chartist class="ct-chart" chartist-data="elem.data" chartist-chart-type="Line"></chartist>
+
+
+            <ul class="collection">
+                <li class="collection-item">
+                    <b>Nombre d' entrainements :</b>
+                    {{elem.stats.nb_trainings}}
+                </li>
+                <li class="collection-item">
+                    <b>Durée :</b>
+                    {{elem.stats.duree}} min
+                </li>
+                <li class="collection-item"><b>Update KaNote</b> :
+                    <div class="progress">
+                        <div class="determinate" ng-style="{'width': elem.stats.assiduite*100+'%'}"></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s4 center-align">
+            <input name="wide" type="radio" id="year" value="Année" ng-model="wide"/>
+            <label for="year">Année</label>
+        </div>
+        <div class="col s4 center-align">
+            <input name="wide" type="radio" id="month" value="Mois" ng-model="wide"/>
+            <label for="month">Mois</label>
+        </div>
+        <div class="col s4 center-align">
+            <input name="wide" type="radio" id="week" value="Semaine" ng-model="wide"/>
+            <label for="week">Semaine</label>
+        </div>
+    </div>
+    {{wide}}
+    <div class="row center-align">
+
+
+        <div class="col s4 animated bounceIn">
+            <select class="" ng-model="selectYear.value" ng-change="yearChanged();" material-select watch>
+                <option ng-repeat="value in selectYear.years">{{value}}</option>
+            </select>
+        </div>
+        <div class="col s4 animated bounceIn" ng-show="wide == 'Mois' || wide == 'Semaine'" >
+            <select class="" ng-model="selectMonth.value"  ng-change="monthChanged();" material-select watch>
+                <option ng-repeat="value in selectMonth.months">{{value}}</option>
+            </select>
+        </div>
+        <div class="col s4 animated bounceIn" ng-show="wide == 'Semaine'">
+            <select class="" ng-model="selectWeek.value" material-select watch>
+                <option ng-repeat="value in selectWeek.weeks">{{value.label}}</option>
+            </select>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="row">
+
+
+
+    </div>
+</div>
+<script>
+    //    $('select').not(".late-select").material_select();
+</script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

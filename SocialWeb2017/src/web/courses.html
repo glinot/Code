@@ -1,0 +1,30 @@
+<div ng-controller="CoursesCrtl">
+    <div class="row">
+        <div class="col s12">
+            <div class="row valign-wrapper">
+                <div class="input-field col s10">
+                    <input type="text" id="autocomplete-input" ng-model="search"
+                           ng-change="getCourses()" class="autocomplete">
+                    <label for="autocomplete-input">Pick a course</label>
+                </div>
+                <div class="col s2 valign">
+                    <a class="waves-effect waves-light btn" ng-click="addCourse()">Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="waves-effect waves-light btn animated bounceIn red " ng-click="deleteCourses()" ng-show="showDelete()"><i class="material-icons right">delete</i>Delete</a>
+    <ul class="collection with-header">
+        <li class="collection-item clickable" ng-repeat="c in courses" ng-class="{'blue lighten-1 white-text' : c.selected}" ng-click="toggleCourse(c)">
+            <div>{{c.name}}<a href="#!" class="secondary-content"></a></div>
+        </li>
+    </ul>
+
+
+</div>
+<style>
+    .clickable{
+        cursor: pointer;
+    }
+</style>

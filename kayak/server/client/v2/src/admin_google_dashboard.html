@@ -1,0 +1,22 @@
+<div class="container" ng-controller="adminGoogleDashboard">
+    <div class="row center-align">
+        <h1> Google API Dashboard</h1>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="maps" type="text" class="validate"  ng-change="tokenModified = true" ng-model="google_api_tokens.maps">
+            <label for="maps">Google maps api</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="calendar" type="text" class="validate"  ng-change="tokenModified = true" ng-model="google_api_tokens.calendar">
+            <label for="calendar">Google calendar api</label>
+        </div>
+    </div>
+
+    <div class="row right-align" ng-show="tokenModified">
+        <a class="waves-effect waves-light btn grey animated bounceIn"  ng-click="cancel();tokenModified = false;" >cancel</a>
+        <a class="waves-effect waves-light btn blue animated bounceIn"  ng-click="postTokens();tokenModified = false;" >update</a>
+    </div>
+</div>

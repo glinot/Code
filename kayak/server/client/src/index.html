@@ -1,0 +1,162 @@
+<!-- Défini que notre fichier est de type html et qu'on écrit en français -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<!-- [HEAD] Contient les principales informations nécessaires au fonctionnement de la page -->
+<!-- ===================================================================================== -->
+
+<head>
+    <meta name="theme-color" content="#2c3e50">
+    <!-- Défini l'encodage de la page HTML -->
+    <meta charset="utf-8">
+    <!-- Permet de réler d'éventuels soucis de dézoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Nom de la page web (visible en haut de l'écran sur l'onglet) -->
+    <title>KaNote</title>
+    <!-- Fichiers CSS utilisés -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <script src="./js/liquidmetal.js" type="text/javascript"></script>
+    <!-- Ne modifier que ceux-ci -->
+    <link href="css/boostrap-custom.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/bootstrap-material-design.min1.css"> -->
+    <link rel="stylesheet" type="text/css" href="./css/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-tour.min.css">
+    <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
+
+</head>
+
+<!-- [BODY] Contient tous les élements visibles/définis sur notre page html -->
+<!-- ====================================================================== -->
+<body>
+<!-- Bouton permettant d'accéder au menu en haut à gauche -->
+<div class="header">
+    <div class="wrapper-menu">
+        <div class="burger-menu" id="mobile-menu">
+            <div class="burger-item"></div>
+            <div class="burger-item"></div>
+            <div class="burger-item"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Container d'id "#main-container", qui contiendra nos différentes pages
+     Les pages seront chargées via les requêtes jQuery (index.js) -->
+
+
+<!-- [MENU] présent à gauche de l'écran -->
+<!-- ================================== -->
+<div id="side-wrapper" class="hidded ">
+    <ul class="nav nav-pills nav-stacked  text-capitalize side-menu">
+        <!-- [AFFICHAGE PROFIL] -->
+        <!-- ================== -->
+        <li id="tr-profile" data-toggle-group="menu-item" data-fragement-target="profile.html" class="profile-section text-center">
+            <!-- Contient l'image de profil du sportif -->
+            <div>
+                <a><img id="lm-user-image" class="img-circle img-profile" src="./img/profil.png"/>
+                </a>
+            </div>
+            <!-- Affichage du nom du sportif -->
+            <div><a class="text-profil"><p class="p-inline"    id="lm-user-name"></p> <p class="p-inline"  id="lm-user-surname"></p></a></div>
+        </li>
+
+
+        <!-- [LIST MENU] Liste contenant les différentes options du menu -->
+        <!-- =========================================================== -->
+
+
+        <li class="user-feature" level="coach" data-toggle-group="menu-item"
+            data-fragement-target="coach_create_training.html">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Créer une séance </a></li>
+        <li class="user-feature" level="coach" data-toggle-group="menu-item"
+            data-fragement-target="coach_training_list.html">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Liste des entrainements </a></li>
+        <li class="user-feature" level="coach" data-toggle-group="menu-item"
+            data-fragement-target="coach_sportmen_list.html">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Liste des sportifs </a></li>
+        <li class="user-feature" level="sportman" data-toggle-group="menu-item"
+            data-fragement-target="sportman_training_book.html" id="tr-training-book">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Carnet d'entrainement </a></li>
+        <li class="user-feature" level="sportman-hidden" data-toggle-group="menu-item"
+            data-fragement-target="sportman_fill_training.html">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Remplir une séance </a></li>
+        <li class="user-feature" level="sportman" data-toggle-group="menu-item"
+            data-fragement-target="sportman_stats.html" id="tr-stats">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Statistiques </a></li>
+        <li class="user-feature" level="sportman" data-toggle-group="menu-item"
+            data-fragement-target="sportman_create_training.html" id="tr-create-training" id="tr-create-training">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Créer une séance </a></li>
+        <li class="user-feature" level="admin" data-toggle-group="menu-item"
+            data-fragement-target="admin_user_list.html">
+            <a><span><img class="img-icon" src="img/pagaie.png"/></span> Liste des utilisateurs </a></li>
+        <li id="disconnect" class="text-center">
+            <a>Deconnexion</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Div contenant la zone noire qui rempli la page lors d'un click sur le menu -->
+<div id="dark-div" class="hidded"></div>
+<div class="container" id="main-container">
+</div>
+<!-- Modal -->
+<div id="modal-feel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bonjour <b class="sportman-name">Grégoire</b> </h4>
+                <h4 class="modal-title">Comment vous sentez vous aujourd'hui? </h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="rating-section">
+
+                    <i index="0" class="fa fa-star" aria-hidden="true"></i>
+                    <i index="1" class="fa fa-star" aria-hidden="true"></i>
+                    <i index="2" class="fa fa-star-o" aria-hidden="true"></i>
+                    <i index="3" class="fa fa-star-o" aria-hidden="true"></i>
+                    <i index="4" class="fa fa-star-o" aria-hidden="true"></i>
+
+                </div>
+
+            </div>
+            <div class="modal-footer text-center">
+                <b class="submit-btn">ok</b>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<script src="js/utils.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="./js/liquidmetal.js" type="text/javascript"></script>
+<!-- Script propre à la page, on peut le modifier -->
+<script src="js/moment-with-locales.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/global.js"></script>
+<script src="js/bootstrap-notify.min.js"></script>
+<script src="js/bootstrap-tour.min.js"></script>
+<script src="js/user_guide.js"></script>
+
+
+
+
+</body>
+<!-- Fin du corps -->
+
+</html>
+<!-- Fin du fichier -->

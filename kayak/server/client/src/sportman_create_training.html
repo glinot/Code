@@ -1,0 +1,155 @@
+<!-- ================================================================================
+  Coach : création et implémentation des entraînements dans les agendas des sportifs.
+================================================================================= -->
+<head>
+    <meta charset='utf-8'>
+    <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css"/>
+    <script type="text/javascript" src="js/bootstrap-datepicker_bis.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css"/>
+</head>
+
+<h1>SÉANCE</h1>
+
+<h2>Intitulé de la séance</h2>
+<input type="text" class="form-control" id="title">
+
+<div id="datepairExample">
+    <h2>Date</h2>
+    <input id="get_date" type="text" class="date start form-control"/>
+</div>
+
+<div class="form-group needs-check" check-function="hour_start">
+    <h2>Heure de début</h2>
+    <input id="heure_deb" type="time" name="heure" class="form-control" value="10h20">
+    <div class="status-message"></div>
+</div>
+<div class="form-group needs-check" check-function="hour_end">
+    <h2>Heure de fin</h2>
+    <input id="heure_fin" type="time" name="heure" class="form-control" value="18h30">
+    <div class="status-message"></div>
+</div>
+
+
+<h2>Objectif</h2>
+<textarea class="form-control" rows="5" id="objectives"></textarea>
+
+<h2>Procédés d'entraînement</h2>
+<select id="procede-entrainement" class="form-control">
+    <option value="endurance">Endurance</option>
+    <option value="sv1">SV 1</option>
+    <option value="sv2">SV 2</option>
+    <option value="pma_vma">PMA/VMA</option>
+    <option value="lactique">Lactique</option>
+    <option value="endurance_vitesse">Endurance de vitesse</option>
+    <option value="vitesse">Vitesse</option>
+    <option value="technique">Technique</option>
+    <option value="rm_f_endurance">RM Force Endurance</option>
+    <option value="rm_f_puissance">RM Puissance Force</option>
+    <option value="rm_puissance_vitesse">RM Puissance Vitesse</option>
+    <option value="rm_f_max">RM Force Max</option>
+    <option value="rm_f_explosive">RM Force Explosive</option>
+    <option value="autre_explosive">Autre</option>
+</select>
+
+<h2>Milieu de pratique</h2>
+<select id="milieu-pratique" class="form-control">
+    <option value="eau_plate">Eau plate</option>
+    <option value="eau_vive_II">Eau vive Classe II</option>
+    <option value="eau_vive_III">Eau vive Classe III</option>
+    <option value="eau_vive_IV">Eau vive Classe IV</option>
+    <option value="autre_milieu">Autre</option>
+</select>
+
+<h2>Moyen d'entrainement :</h2>
+<select id="moyen-dentrainement" class="form-control">
+    <optgroup label="SPECIFIQUE">
+        <option value="slalom_sans_portes">Slalom sans porte</option>
+        <option value="slalom_avec_portes">Slalom avec portes</option>
+        <option value="bateau_directeur">Bateau directeur</option>
+        <option value="specifique_autre">Autre (...)</option>
+    </optgroup>
+    <optgroup label="CARDIO">
+        <option value="course">Course à pied</option>
+        <option value="velo">Vélo de route</option>
+        <option value="vtt">VTT</option>
+        <option value="ski_de_fond">Ski de fond</option>
+        <option value="natation">Natation</option>
+        <option value="sport_raquette">Sport raquette</option>
+        <option value="cardio_autre">Autre (...)</option>
+    </optgroup>
+    <optgroup label="RENFORCEMENT MUSCULAIRE">
+        <option value="rm_salle">RM salle</option>
+        <option value="rm_embarquee">RM embarquée</option>
+    </optgroup>
+    <optgroup label="COMPETITIONS ET TESTS">
+        <option value="slalom">Slalom (Situation de compétition, N1, World Cup / Championnat du monde, Championnat d'Europe)</option>
+        <option value="test_terrain">Test terrain</option>
+        <option value="rm_autre">Autre (...)</option>
+    </optgroup>
+    <optgroup label="SOINS">
+        <option value="kine_osteo">Kiné/Ostéo</option>
+        <option value="balneo">Balnéothérapie</option>
+        <option value="relaxation_yoga">Relaxation/Yoga</option>
+        <option value="chryotherapie">Chryothérapie</option>
+        <option value="etirements">Etirements</option>
+        <option value="soins_autre">Autre (...)</option>
+    </optgroup>
+    <optgroup label="STRATEGIE PROJET">
+        <option value="analyse_video">Analyse vidéo</option>
+        <option value="entretien">Entretien avec entraîneur</option>
+        <option value="gestion_conception">Gestion, conception entretien matos</option>
+        <option value="travail_projet_vie">Travail sur le projet de vie</option>
+        <option value="logistique">Logistique saison, course, actions</option>
+        <option value="strategie_autre">Autre (...)</option>
+    </optgroup>
+
+</select>
+
+<!-- GITAN -->
+</br>
+<!-- GITAN -->
+
+<!-- Button trigger modal -->
+<button id="button_validate" type="button" class="btn btn-success form-control" data-toggle="modal"
+        data-target="#myModal2">Valider
+</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="myModalLabel">Vous allez créer la séance suivante :</h2>
+            </div>
+            <div class="modal-body">
+                <h3> Intitulé : </h3>
+                <div id="title_return"></div>
+                <h3> Date : </h3>
+                <div id="date_return"></div>
+                <h3> Heure de début : </h3>
+                <div id="horaire_deb_return"></div>
+                <h3> Heure de fin : </h3>
+                <div id="horaire_fin_return"></div>
+                <h3> Objectif : </h3>
+                <div id="objectives_return"></div>
+                <h3> Procédés d'entraînement : </h3>
+                <div id="procede_return"></div>
+                <h3> Milieu de pratique : </h3>
+                <div id="milieu_return"></div>
+                <h3> Moyen d'entrainement : </h3>
+                <div id="moyen_return"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default form-control" data-dismiss="modal">Modifier</button>
+                <button id="validation_seance" type="button" class="btn btn-primary form-control" data-dismiss="modal">
+                    Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/sportman_create_training.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>

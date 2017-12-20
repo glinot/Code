@@ -1,0 +1,25 @@
+{
+  "name": "pj-test-logiciel",
+  "version": "1.0.0",
+  "description": "TypeScript analyser",
+  "main": "src/main",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc ; node src/main.js",
+    "stop": "rm -f src/*.js src/*.log"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrien-thebault/pj-test-logiciel.git"
+  },
+  "author": "Alexis BUSSENEAU, Grégoire LINOT, Adrien THEBAULT, Mohamed RACHID",
+  "license": "ISC",
+  "homepage": "https://github.com/adrien-thebault/pj-test-logiciel#readme"
+}

@@ -1,0 +1,63 @@
+<div class="container" ng-controller="coachTrainingBookCrtl">
+    <ul class="collection">
+        <li class="collection-item avatar lighten-5 animated fadeIn training-item"
+            ng-repeat="t in trainings"
+            ng-class="getGlobalTypeColor(t.globaltype);"
+            ng-click="clickOnTraining(t);"
+
+        >
+            <img ng-src="{{globalTypeToImage(t.globaltype);}}" alt="" class="circle">
+            <span class="title">{{t.titre || "Pas de titre"}}</span>
+            <p>{{getDate(t);}} <br>
+                {{formatHour(t.heure_deb)}} - {{formatHour(t.heure_fin)}}
+            </p>
+            <a href="#!" class="secondary-content animated bounceIn"
+              >
+                <i ng-click="selectCurrentTraining(t);$event.stopPropagation();"class="material-icons">delete</i>
+            </a>
+        </li>
+    </ul>
+    <div class="row center-align" ng-hide="noMoreTrainings">
+        <a class="waves-effect waves-teal btn btn-block" ng-click="getTrainings();">Plus</a>
+    </div>
+
+
+
+    <!-- Modal Structure -->
+    <div id="modalRemove" class="modal" >
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <p>Voulez vous supprimer cet entrainement ? </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+               ng-click="removeTraining();">Valider</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Annuler</a>
+        </div>
+    </div>
+    <a class="btn-floating btn-large waves-effect waves-light red" style="bottom: 40px; right: 24px; position: fixed"><i
+            class="material-icons" ng-click="createTraining()">add</i></a>
+
+
+
+
+
+    <!-- Modal MAPS API-->
+
+
+
+
+
+</div>
+<!-- On Load script update materilize no logic code -->
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

@@ -1,0 +1,210 @@
+<div class="container" ng-controller="coachSportmanAccountCrtl">
+
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">Carnet d'entrainement</a></li>
+                <!--li class="tab col s3"><a href="#test2">Stats</a></li!-->
+                <li class="tab col s3 "><a href="#test3">Profil</a></li>
+                <li class="tab col s3"><a href="#test4">Excel</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <div class="row">
+                <ul class="collection">
+                    <li ng-repeat="training in trainings" href="#!"
+                        class="training-item collection-item avatar lighten-5 animated fadeIn"
+                        ng-class="getGlobalTypeColor(training.globaltype);"
+                        ng-click="clickOnTraining(training);"
+                        repeat-update-modal>
+                        <img src="" alt="" ng-src="{{globalTypeToImage(training.globaltype)}}"
+                             class="circle img-responsive">
+                <span class="hide">
+                    <i class="md-28 material-icons green-text darken-1-text" ng-show="training.feedback.filled">check_circle</i>
+                    <i class="md-28 material-icons orange-text darken-1-text" ng-hide="training.feedback.filled">error</i>
+                </span>
+                <span class="title lighten-1-text"
+                      ng-class="{'red-text' : !training.feedback.filled ,'green-text' : training.feedback.filled} ">
+                    {{translate(training.type)}}
+                </span>
+                        <p>{{translate(training.type)}}<br>
+                            {{getDate(training);}}
+                        </p>
+
+                    </li>
+                </ul>
+
+            </div>
+            <div class="row center-align" ng-hide="noMoreTrainings">
+                <a class="waves-effect waves-teal btn btn-block" ng-click="getTrainings();">Plus</a>
+            </div>
+        </div>
+        <div id="test2" class="col s12">
+
+
+        </div>
+        <div id="test3" class="col s12">
+
+            <div ng-repeat="(name , block) in displayed">
+
+                <div class="row">
+
+                    <div class="center-align grey-text middle-text">{{name}}</div>
+                </div>
+                <div class="row">
+
+                    <table class="bordered">
+
+                        <tbody>
+                        <tr ng-repeat="(key,block) in block">
+                            <td>{{key}}</td>
+                            <td>{{pathToVal(block.path)}} {{block.unit}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row  ">
+                <div class="input-field col m6 s12">
+                    <input id="hrv" type="text" ng-class="{'valid' : isHRVValid(),'invalid' : !isHRVValid()}"
+                           ng-model="userProfile.health.hrv_test" ng-change="hrvModified = true;">
+                    <label for="hrv">HRV</label>
+                </div>
+                <div class="input-field col m6 s12" ng-show="hrvModified">
+
+                    <a class="waves-effect waves-light btn blue white-text" ng-class="{'disabled' : !isHRVValid()}"
+                       ng-click="updateHRV();">Ajouter</a>
+
+
+                    <a class="waves-effect waves-light btn  grey " ng-click="cancelHRV();">Annuler</a>
+                </div>
+            </div>
+
+        </div>
+        <div id="test4" class="col s12">
+            <div class="row">
+                <div class="input-field">
+                    <select ng-model="selectYears.value" material-select>
+                        <option ng-repeat="value in selectYears.years">{{value}}</option>
+                    </select>
+                    <label>Années</label>
+                </div>
+            </div>
+
+
+            <div class="row" ng-hide="selectYears.value==0">
+                <a class="waves-effect waves-light btn" ng-click="downloadexcel();">Télécharger</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="trainingView" class="modal">
+        <div class="modal-content">
+            <h4>{{currentTraining.titre}}</h4>
+            <p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Date</td>
+                    <td>{{getDate(currentTraining);}}</td>
+                </tr>
+                <tr>
+                    <td>Début</td>
+                    <td>{{formatHour(currentTraining.heure_deb)}}</td>
+                </tr>
+                <tr>
+                    <td>Fin</td>
+                    <td>{{formatHour(currentTraining.heure_fin)}}</td>
+                </tr>
+                <tr>
+                    <td>Lieu</td>
+                    <td>{{currentTraining.lieu}}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{currentTraining.description}}</td>
+                </tr>
+                <tr>
+                    <td>Objectif</td>
+                    <td>{{currentTraining.objective}}</td>
+                </tr>
+                <tr>
+                    <td>Mileu</td>
+                    <td>{{translate(currentTraining.milieu)}}</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>{{translate(currentTraining.type)}}</td>
+                </tr>
+                <tr>
+                    <td>Bilan</td>
+                    <td>{{currentTraining.feedback.objectives_text}}</td>
+                </tr>
+                <tr>
+                    <td>Evaluation de l'objectif</td>
+                    <td>
+                        <i class="material-icons yellow-text"
+                           ng-repeat="i in range(currentTraining.feedback.eval_objective) track by $index">star</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Evaluation des sensations</td>
+                    <td>
+                        <i class="material-icons yellow-text"
+                           ng-repeat="i in range(currentTraining.feedback.eval_sensations) track by $index">star</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Evaluation de la fatigue</td>
+                    <td>
+                        <i class="material-icons yellow-text"
+                           ng-repeat="i in range(currentTraining.feedback.eval_fatigue) track by $index">star</i>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+    </div>
+
+
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('ul.tabs').tabs();
+    });
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

@@ -1,0 +1,1 @@
+mongoexport --db kanotDB --collection system > newdump.json

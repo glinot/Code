@@ -1,0 +1,122 @@
+.box {
+    border: solid gainsboro 1px;
+    border-radius: 1px;
+    padding: 1px;
+    box-shadow: 1px 1px 2px -1px;
+    margin-bottom: 30px;
+}
+
+.wrapper-stats {
+    cursor: pointer;
+}
+
+.wrapper-stats.active {
+    background-color: #ecf0f1;
+    -webkit-animation: 0.1s change-bg; /* Chrome, Safari, Opera */
+    animation: 0.3s change-bg;
+}
+
+.stats-detail {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+.DISABLEDtraining-time .ct-series-a .ct-line {
+    /* Set the colour of this series line */
+    stroke: #b0e4ff;
+    /* Control the thikness of your lines */
+    stroke-width: 4px;
+}
+
+.DISABLEDtraining-time .ct-series-a .ct-point {
+
+    stroke: #5baaff;
+}
+
+.DISABLEDtraining-time .ct-series-b .ct-line {
+    /* Set the colour of this series line */
+    stroke: #53a625;
+    /* Control the thikness of your lines */
+    stroke-width: 4px;
+}
+
+.DISABLEDtraining-time .ct-series-b .ct-point {
+
+    stroke: #13ff21;
+}
+
+.curve-selector td {
+    padding-right: 5px;
+
+}
+
+.color-line {
+    display: inline-block;
+    width: 50px;
+    height: 7px;
+    background-color: #5baaff;
+    border-radius: 5px 5px 5px 5px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+.custom-checkbox {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-checkbox.active > .on {
+    display: block;
+}
+
+.custom-checkbox.active > .off {
+    display: none;
+}
+
+.custom-checkbox.disabled > .off {
+    display: block;
+}
+
+.custom-checkbox.disabled > .on {
+    display: none;
+}
+
+.curve-selector {
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+@-webkit-keyframes change-bg {
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: #ecf0f1;
+    }
+}
+
+/* Standard syntax */
+@keyframes change-bg {
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: #ecf0f1;
+    }
+}
+
+.big-stats .ct-label {
+    color: #111a23;
+    fill: #111a23;
+    font-size: 13px;
+    font-weight: lighter;
+    font-family: Roboto;
+}
+
+/*Wrapper stats custom scale*/

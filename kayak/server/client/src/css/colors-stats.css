@@ -1,0 +1,193 @@
+.color-1 {
+    background-color: #5baaff;
+}
+
+.color-2 {
+    background-color: #ff5c4f;
+}
+
+.color-3 {
+    background-color: #a5e56e;
+}
+
+.color-4 {
+    background-color: #ff8426;
+}
+
+.color-5 {
+    background-color: #27ae60;
+}
+
+.color-6 {
+    background-color: #34495e;
+}
+
+.color-7 {
+    background-color: #2C82C9;
+}
+
+.color-8 {
+    background-color: #EEE657;
+}
+
+.color-9 {
+    background-color: #E01931;
+}
+
+.color-10 {
+    background-color: #71BA51;
+}
+
+.color-11 {
+    background-color: #b85c1f;
+}
+
+.ct-series-a .ct-line {
+    stroke: #5baaff;
+    stroke-width: 4;
+}
+
+.ct-series-b .ct-line {
+    stroke: #ff5c4f;
+    stroke-width: 4;
+}
+
+.ct-series-c .ct-line {
+    stroke: #a5e56e;
+    stroke-width: 4;
+}
+
+.ct-series-d .ct-line {
+    stroke: #ff8426;
+    stroke-width: 4;
+}
+
+.ct-series-e .ct-line {
+    stroke: #27ae60;
+    stroke-width: 4;
+}
+
+.ct-series-f .ct-line {
+    stroke: #34495e;
+    stroke-width: 4;
+}
+
+.ct-series-g .ct-line {
+    stroke: #2C82C9;
+    stroke-width: 4;
+}
+
+.ct-series-h .ct-line {
+    stroke: #EEE657;
+    stroke-width: 4;
+}
+
+.ct-series-i .ct-line {
+    stroke: #E01931;
+    stroke-width: 4;
+}
+
+.ct-series-j .ct-line {
+    stroke: #71BA51;
+    stroke-width: 4;
+}
+
+.ct-series-k .ct-line {
+    stroke: #b85c1f;
+    stroke-width: 4;
+}
+
+.ct-series-a .ct-point {
+    stroke: #5baaff;
+}
+
+.ct-series-b .ct-point {
+    stroke: #ff5c4f;
+}
+
+.ct-series-c .ct-point {
+    stroke: #a5e56e;
+}
+
+.ct-series-d .ct-point {
+    stroke: #ff8426;
+}
+
+.ct-series-e .ct-point {
+    stroke: #27ae60;
+}
+
+.ct-series-f .ct-point {
+    stroke: #34495e;
+}
+
+.ct-series-g .ct-point {
+    stroke: #2C82C9;
+}
+
+.ct-series-h .ct-point {
+    stroke: #EEE657;
+}
+
+.ct-series-i .ct-point {
+    stroke: #E01931;
+}
+
+.ct-series-j .ct-point {
+    stroke: #71BA51;
+}
+
+.ct-series-k .ct-point {
+    stroke: #b85c1f;
+}
+
+.ct-series-a .ct-slice-pie {
+    fill: #5baaff;
+}
+
+.ct-series-b .ct-slice-pie {
+    fill: #ff5c4f;
+}
+
+.ct-series-c .ct-slice-pie {
+    fill: #a5e56e;
+}
+
+.ct-series-d .ct-slice-pie {
+    fill: #ff8426;
+}
+
+.ct-series-e .ct-slice-pie {
+    fill: #27ae60;
+}
+
+.ct-series-f .ct-slice-pie {
+    fill: #34495e;
+}
+
+.ct-series-g .ct-slice-pie {
+    fill: #2C82C9;
+}
+
+.ct-series-h .ct-slice-pie {
+    fill: #EEE657;
+}
+
+.ct-series-i .ct-slice-pie {
+    fill: #E01931;
+}
+
+.ct-series-j .ct-slice-pie {
+    fill: #71BA51;
+}
+
+.ct-series-k .ct-slice-pie {
+    fill: #b85c1f;
+}
+
+.wrapper-stats .ct-line{
+    stroke-width: 3;
+}
+.wrapper-stats .ct-point{
+    stroke-width: 0;
+}

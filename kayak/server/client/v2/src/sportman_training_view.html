@@ -1,0 +1,86 @@
+<div class="container" ng-controller="sportmanTrainingViewCrtl">
+
+    <div class="row top-row center-align animated bounceIn" ng-show="modified==true;">
+        <a class="waves-effect waves-light btn" ng-click="postTrainingFeedback();">Sauvegarder </a>
+        <a class="waves-effect waves-light btn" ng-click="resetTraining();">Annuler </a>
+    </div>
+
+
+    <ul class="collapsible popout row" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">info_outline</i>Informations</div>
+            <div class="collapsible-body">
+
+                <ul class="collection" ng-hide="editingMode">
+                    <li class="collection-item"><b>Intitulé :</b> {{selectedTraining.titre}}</li>
+                    <li class="collection-item"><b>Date :</b> {{getNiceDate()}}</li>
+                    <li class="collection-item"><b>Lieu :</b> {{selectedTraining.lieu}}</li>
+                    <li class="collection-item"><b>Début :</b> {{minToHour(selectedTraining.heure_deb)}}</li>
+                    <li class="collection-item"><b>Fin :</b> {{minToHour(selectedTraining.heure_fin)}}</li>
+                    <li class="collection-item"><b>Description :</b> {{selectedTraining.description}}</li>
+                    <li class="collection-item"><b>Objectif :</b> {{selectedTraining.objective}}</li>
+                    <li class="collection-item"><b>Procédés d'entraînement :</b>{{translate(selectedTraining.procede)}}
+                    </li>
+                    <li class="collection-item"><b>Milieu de pratique :</b> {{translate(selectedTraining.milieu)}}</li>
+                    <li class="collection-item"><b>Moyen d'entrainement :</b> {{translate(selectedTraining.type)}}</li>
+                    <li class="collection-item"><b>Google Calendar</b> <a href="{{selectedTraining.google_calendar_html_link}}" target="_blank">{{selectedTraining.google_calendar_html_link}}</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header "><i class="material-icons">warning</i>Obligatoire</div>
+            <div class="collapsible-body ">
+
+                <div class="row">
+                    <form class="col s10 offset-s1">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea ng-change="modify();" id="textarea1" class="materialize-textarea"
+                                          ng-model="selectedTraining.feedback.objectives_text"></textarea>
+                                <label for="textarea1">Bilan de séance</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row starsRatingBlock " ng-repeat="rating in ratings">
+                    <h5>{{rating.name}} :</h5>
+                    <div class="animated fadeIn" star-rating rating-value="rating.current" max="rating.max"
+                         on-rating-selected="getSelectedRating(val , rating.ref)"></div>
+                </div>
+
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">blur_on</i>Optionel</div>
+            <div class="collapsible-body center-align">
+
+
+                <div class="row " ng-repeat="(db_name , nname) in optionalFeedbacks">
+                    <div class="input-field col s12">
+                        <input ng-change="modify();" id="last_name" type="text" class="validate"
+                               ng-model="selectedTraining.feedback[db_name]">
+                        <label for="last_name">{{nname}}</label>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    $('.collapsible').collapsible({
+        accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+</script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

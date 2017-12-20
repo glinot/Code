@@ -1,0 +1,35 @@
+{
+  "name": "angular-materializecss-autocomplete",
+  "version": "0.0.3",
+  "main": [
+    "angular-materializecss-autocomplete.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "materialize": "^0.97.8"
+  },
+  "homepage": "https://github.com/marcosflorencio/angular-materializecss-autocomplete",
+  "authors": [
+    "@marcosflorencio",
+    "@guuibayer"
+  ],
+  "description": "",
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.3",
+    "commit": "d2d2b937ca6a2b6ba76551d0348be0ee95f2f0f0"
+  },
+  "_source": "https://github.com/marcosflorencio/angular-materializecss-autocomplete.git",
+  "_target": "^0.0.3",
+  "_originalSource": "angular-materializecss-autocomplete",
+  "_direct": true
+}

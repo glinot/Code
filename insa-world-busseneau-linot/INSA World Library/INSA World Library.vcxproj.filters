@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PositionGenerator">
+      <UniqueIdentifier>{55a45ba4-d36b-49cc-a767-bd46aa8f1a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MoveManager">
+      <UniqueIdentifier>{81503cc0-39aa-43ca-937c-69f2b1b7f644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MapGenerator">
+      <UniqueIdentifier>{7eab8e6c-5b55-4b9d-b09a-ed7d2f238a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MoveManager">
+      <UniqueIdentifier>{cbf87423-9321-456e-b110-3fdb2ee0c115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PositionGenerator">
+      <UniqueIdentifier>{40b2d8bf-4e73-46e5-9c55-1dd4e7bfe282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MapGenerator\Strategy">
+      <UniqueIdentifier>{2f094204-17e4-4be3-87c5-655cdc7d77c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MapGenerator">
+      <UniqueIdentifier>{acf5cab5-1950-4bab-aa58-b8abf80927d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MapGenerator\Strategy">
+      <UniqueIdentifier>{7cdabf3a-852e-436e-93cf-d4ef3c4f466c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MapGenerator.h">
+      <Filter>Header Files\MapGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratorStrategy.h">
+      <Filter>Header Files\MapGenerator\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="MirrorStrategy.h">
+      <Filter>Header Files\MapGenerator\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomStrategy.h">
+      <Filter>Header Files\MapGenerator\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveManager.h">
+      <Filter>Header Files\MoveManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionGenerator.h">
+      <Filter>Header Files\PositionGenerator</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MapGenerator.cpp">
+      <Filter>Source Files\MapGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomStrategy.cpp">
+      <Filter>Source Files\MapGenerator\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="MirrorStrategy.cpp">
+      <Filter>Source Files\MapGenerator\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionGenerator.cpp">
+      <Filter>Source Files\PositionGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveManager.cpp">
+      <Filter>Source Files\MoveManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

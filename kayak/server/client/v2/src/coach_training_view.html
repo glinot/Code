@@ -1,0 +1,363 @@
+<div class="container" ng-controller="coachTrainingViewCrtl">
+    <div class="row">
+        <div class="col s12 m6">
+            <h4 class="center-align grey-text text-darken-1">Sportifs</h4>
+            <ul class="collection">
+                <li class="collection-item user-item avatar animated bounceIn" ng-repeat="sportman in sportmen"
+                    ng-click="clickOnSportman(sportman);">
+                    <img ng-src="{{sportman.profile.pictures.profile}}" alt="" class="circle">
+                    <span class="title">{{sportman.profile.name}} {{sportman.profile.surname}}</span>
+                    <p>{{sportman.profile.email}}<br>
+
+                    </p>
+                    <a href="#!" class="secondary-content" ng-click="$event.stopPropagation();">
+
+                        <i class="material-icons blue-text text-lighten-1 show_hover  animated fadeIn "
+                           ng-click="deleteSportman(sportman);">delete</i>
+                        <i class="material-icons blue-text text-lighten-1 hide_hover animated fadeIn  "
+                           ng-hide="!sportman.feedback.filled">done</i>
+                        <i class="material-icons orange-text text-darken-2 hide_hover  animated fadeIn "
+                           ng-show="!sportman.feedback.filled">do_not_disturb</i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col s12 m6 left-align">
+
+            <h4 class="center-align grey-text text-darken-1">{{training.titre}}</h4>
+
+            <div class="row">
+                <b>Type</b> : {{$parent.translate(training.type);}}
+            </div>
+            <div class="row">
+                <b>Date</b> : {{getDate(training);}} {{minToHour(training.heure_deb)}} -
+                {{minToHour(training.heure_fin)}}
+            </div>
+            <div class="row">
+                <b>Durée</b> : {{training.heure_fin- training.heure_deb}} min
+            </div>
+
+            <div class="row">
+                <b>Lieu</b> : {{training.lieu || "Non renseigné"}}
+            </div>
+            <div class="row">
+                <b>Milieu</b> : {{$parent.translate(training.milieu)}}
+            </div>
+            <div class="row">
+                <b>Description</b> : {{training.description}}
+            </div>
+            <div class="row">
+                <b>Objectif</b> : {{training.objective}}
+            </div>
+            <div class="row">
+                <b>Google Calendar : </b> <a ng-href="{{training.google_calendar_html_link}}" target="_blank">{{training.google_calendar_html_link}}</a>
+            </div>
+
+
+            <!-- Bilan Coach-->
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="bilan_coach" class="materialize-textarea" ng-change="bilanModified = true"
+                                      ng-model="training.bilan">{{bilanModified}}</textarea>
+                            <label for="bilan_coach">Bilan </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row right-align" ng-show="bilanModified">
+                <a class="waves-effect waves-light btn grey white-text animated bounceIn">annuler</a>
+                <a class="waves-effect waves-light btn blue white-text animated bounceIn"
+                   ng-click="updateBilan();">ok</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="row animated bounceIn" ng-show="hasSportmanBeenClicked">
+        <h5 class="center-align grey-text text-darken-3">Feedback</h5>
+        <div class="col s12 animated fadeIn" ng-hide="!feedback.filled">
+            <div class="row">
+                <b class="grey-text text-ligthen-1">Bilan </b> : {{feedback.objectives_text}}
+            </div>
+            <div class="row">
+                <div class="col s1">
+
+                    <b class="grey-text text-ligthen-1">Fatigue </b> :
+                </div>
+                <div class="col s11">
+                    <i class="material-icons md-24 lighten-1-text animated star-icon" ng-class="star"
+                       ng-repeat="i in range(feedback.eval_fatigue || 0)  track by $index">star</i>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s1">
+
+                    <b class="grey-text text-ligthen-1">Objectif </b> :
+                </div>
+                <div class="col s11">
+                    <i class="material-icons md-24 lighten-1-text animated star-icon" ng-class="star"
+                       ng-repeat="i in range(feedback.eval_objective || 0)  track by $index">star</i>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s1">
+                    <b class="grey-text text-ligthen-1">Sensations </b> :
+                </div>
+                <div class="col s11">
+                    <i class="material-icons md-24 lighten-1-text animated star-icon" ng-class="star"
+                       ng-repeat="i in range(feedback.eval_sensations || 0)  track by $index">star</i>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 red-text text-lighten-1 center-align" ng-hide="feedback.filled">
+            <b>{{selectedSportman.profile.name}} {{selectedSportman.profile.surname}}</b> n'as pas encore donné son
+            feedback
+
+        </div>
+    </div>
+
+    <!--Modal add sportmen-->
+    <div id="addSportmen" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter des sportifs</h4>
+
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="search" type="text" class="active" ng-model="searchSportman"/>
+                    <label for="search" class="validate">Recherche</label>
+                </div>
+            </div>
+            <div class="row">
+
+                <ul class="collection">
+                    <li class="collection-item avatar lighten-4 clickable"
+                        ng-repeat="(index_sportman ,sportman) in allSportmen | filter:searchSportman "
+                        ng-click="selectSportman(index_sportman,sportman);"
+                        ng-class="{'blue ligthen-1' : sportman.isSelected , 'grey' : !sportman.isSynced , 'blue' :sportman.isAlreadyAdded}"
+                        id="sportman-{{sportman._id}}"
+                    >
+                        <img ng-src="{{sportman.profile.pictures.profile}}" alt="" class="circle">
+                        <span class="title" ng-class="{'red-text' : !sportman.isSynced}">{{sportman.profile.name}} {{sportman.profile.surname}}</span>
+                        <p>{{sportman.profile.email}}<br>
+                        </p>
+                        <a href="#!" class="secondary-content animated bounceIn"><i
+                                class="material-icons green-text"
+                                ng-show="sportman.isSynced">sync</i></a>
+                        <a tooltipped
+                           data-position="bottom" data-delay="50"
+                           data-tooltip="Votre compte et le compte de {{sportman.profile.name}} {{sportman.profile.surname}} sont mal synchronisés sur Google Calendar"
+                           href="#!"
+                           class="secondary-content animated bounceIn">
+                            <i class="material-icons red-text" ng-hide="sportman.isSynced">sync_problem</i>
+
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+               ng-click="updateSportmen();">ok</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
+        </div>
+    </div>
+    <div id="editTraining" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="intitule" type="text" class="validate" ng-model="training.titre">
+                            <label for="intitule">Intitulé de la Scéance</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="date" type="text" class="datepicker" ng-model="training.date_raw">
+                            <label for="date">Date</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="hour_start" type="text" class="validate" ng-model="training.heure_deb_raw">
+                            <label for="hour_start">Heure de début</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="hour_end" type="text" class="validate" ng-model="training.heure_fin_raw">
+                            <label for="hour_end">Heure de fin </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="place" type="text" class="validate" ng-model="training.lieu">
+                            <label for="place">Lieu</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"
+                                  ng-model="training.objective"></textarea>
+                            <label for="textarea1">Objectif</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select ng-model="training.procede">
+                                <option value="endurance">Endurance</option>
+                                <option value="sv1">SV 1</option>
+                                <option value="sv2">SV 2</option>
+                                <option value="pma_vma">PMA/VMA</option>
+                                <option value="lactique">Lactique</option>
+                                <option value="endurance_vitesse">Endurance de vitesse</option>
+                                <option value="vitesse">Vitesse</option>
+                                <option value="technique">Technique</option>
+                                <option value="rm_f_endurance">RM F Endurance</option>
+                                <option value="rm_f_puissance">RM Puissance Force</option>
+                                <option value="rm_puissance_vitesse">RM Puissance Vitesse</option>
+                                <option value="rm_f_max">RM Force Max</option>
+                                <option value="rm_f_explosive">RM Force Explosive</option>
+                                <option value="autre_pe">Autre</option>
+                            </select>
+                            <label>Procédé d'entrainement</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select ng-model="training.milieu">
+                                <option value="eau_plate">Eau plate</option>
+                                <option value="eau_vive_II">Eau vive Classe II</option>
+                                <option value="eau_vive_III">Eau vive Classe III</option>
+                                <option value="eau_vive_IV">Eau vive Classe IV</option>
+                                <option value="autre_milieu">Autre</option>
+                            </select>
+                            <label>Milieu de pratique</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select ng-model="training.type">
+                                <optgroup label="SPECIFIQUE">
+                                    <option value="slalom_sans_portes">Slalom sans porte</option>
+                                    <option value="slalom_avec_portes">Slalom avec portes</option>
+                                    <option value="bateau_directeur">Bateau directeur</option>
+                                    <option value="specifique_autre">Autre (...)</option>
+                                </optgroup>
+                                <optgroup label="CARDIO">
+                                    <option value="course">Course à pied</option>
+                                    <option value="velo">Vélo de route</option>
+                                    <option value="vtt">VTT</option>
+                                    <option value="ski_de_fond">Ski de fond</option>
+                                    <option value="natation">Natation</option>
+                                    <option value="sport_raquette">Sport raquette</option>
+                                    <option value="cardio_autre">Autre (...)</option>
+                                </optgroup>
+                                <optgroup label="RENFORCEMENT MUSCULAIRE">
+                                    <option value="rm_salle">RM salle</option>
+                                    <option value="rm_embarquee">RM embarquée</option>
+                                </optgroup>
+                                <optgroup label="COMPETITIONS ET TESTS">
+                                    <option value="slalom">Slalom (Situation de compétition, N1, World Cup / Championnat
+                                        du
+                                        monde, Championnat d'Europe)
+                                    </option>
+                                    <option value="test_terrain">Test terrain</option>
+                                    <option value="test_hrv">Test HRV</option>
+                                    <option value="rm_autre">Autre (...)</option>
+                                </optgroup>
+                                <optgroup label="SOINS">
+                                    <option value="kine_osteo">Kiné/Ostéo</option>
+                                    <option value="balneo">Balnéothérapie</option>
+                                    <option value="relaxation_yoga">Relaxation/Yoga</option>
+                                    <option value="chryotherapie">Chryothérapie</option>
+                                    <option value="etirements">Etirements</option>
+                                    <option value="soins_autre">Autre (...)</option>
+                                </optgroup>
+                                <optgroup label="STRATEGIE PROJET">
+                                    <option value="analyse_video">Analyse vidéo</option>
+                                    <option value="entretien">Entretien avec entraîneur</option>
+                                    <option value="gestion_conception">Gestion, conception entretien matos</option>
+                                    <option value="travail_projet_vie">Travail sur le projet de vie</option>
+                                    <option value="logistique">Logistique saison, course, actions</option>
+                                    <option value="strategie_autre">Autre (...)</option>
+                                </optgroup>
+                            </select>
+                            <label>Moyen d'entrainement</label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+               ng-click="updateTraining();">ok</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
+        </div>
+    </div>
+    <!-- Modal modify training-->
+
+
+    <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+
+        <ul>
+            <li>
+                <a class="btn-floating green"
+                   ng-click="addSportman();"
+                ><i class="material-icons">account_circle</i></a></li>
+            <li>
+                <a class="btn-floating blue darken-1"
+                   ng-click="editTraining();"
+                ><i class="material-icons">edit</i></a></li>
+        </ul>
+    </div>
+</div>
+<script>
+
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 600,// Creates a dropdown of 15 years to control year,
+        container: 'body',
+        labelMonthNext: 'Mois suivant',
+        labelMonthPrev: 'Mois précedent',
+        labelMonthSelect: 'Selectionez un mois ',
+        labelYearSelect: 'Selectionez une année',
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+        monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Dec'],
+        weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        weekdaysLetter: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        today: '<i class="material-icons">today</i>',
+        clear: '<i class="material-icons">clear</i>',
+        close: '<i class="material-icons">check</i>',
+        format: 'dd/mm/yyyy'
+    });
+    $('select').material_select();
+
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

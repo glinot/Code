@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+
+  <script type="text/javascript" src="js/bootstrap-datepicker_bis.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css" />
+
+  <script type="text/javascript" src="js/site.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+</head>
+
+<body>
+
+                <p id="datepairExample">
+                    <input type="text" class="date start" />
+                    <input type="text" class="time start" /> to
+                    <input type="text" class="time end" />
+                </p>
+            </div>
+
+
+            <script>
+                $('#datepairExample .time').timepicker({
+                    'showDuration': true,
+                    'timeFormat': 'g:ia',
+                });
+
+                $('#datepairExample .date').datepicker({
+                    'format': 'm/d/yyyy',
+                    'autoclose': true
+                });
+            </script>
+</body>
+</html>

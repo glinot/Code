@@ -1,0 +1,163 @@
+<div class="container" ng-controller="adminUserListCrtl">
+
+
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">Validés</a></li>
+                <li class="tab col s3"><a href="#test2">Demande d'inscription <span class=" badge animated bounceIn "
+                                                                                    height="10px"
+                                                                                    ng-hide="standby.length==0"> <i
+                        class="material-icons">new_releases</i></span></a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+
+            <ul class="collection">
+                <li class="collection-item avatar user-item animated fadeIn" ng-repeat="user in validated">
+                    <img ng-src="{{user.profile.pictures.profile}}" alt="" class="circle">
+                    <span class="title"><b>{{user.profile.name}} {{user.profile.surname}}</b></span>
+                    <p><b>Role :</b>
+                        {{translate(user.role)}}</br>
+                        <b>Email : </b> {{user.profile.email}}
+                    </p>
+                    <a href="#!" class="secondary-content">
+
+                        <i class="material-icons animated bounceIn " ng-click="edit(user);">edit</i>
+                        <i class="material-icons animated bounceIn" ng-click="remove(user);">delete</i>
+
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class=" animated fadeIn center-align" ng-show="validated.length==0">
+                <b class="animated bounceIn"> Aucun utilisateur</b>
+            </div>
+        </div>
+        <div id="test2" class="col s12">
+
+
+            <ul class="collection">
+                <li class="collection-item avatar user-item animated fadeIn" ng-repeat="user in standby">
+                    <img ng-src="{{user.profile.pictures.profile}}" alt="" class="circle">
+                    <span class="title"><b>{{user.profile.name}} {{user.profile.surname}}</b></span>
+                    <p><b>Role :</b>
+                        {{translate(user.role)}}</br>
+                        <b>Email : </b> {{user.profile.email}}
+                    </p>
+                    <a href="#!" class="secondary-content">
+                        <i class="material-icons animated bounceIn" ng-click="validate(user);">done</i>
+                        <i class="material-icons animated bounceIn " ng-click="edit(user);">edit</i>
+                        <i class="material-icons animated bounceIn" ng-click="remove(user);">delete</i>
+                    </a>
+                </li>
+            </ul>
+            <div class=" animated fadeIn center-align" ng-show="standby.length==0">
+                <b class="animated bounceIn"> Aucune demande d'inscription </b>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modalEditUser" class="modal">
+        <div class="modal-content">
+            <h4>Edit</h4>
+            <p>
+            <div class="input-field">
+                <input id="first_name" type="text" class="validate" ng-model="userToEdit.profile.surname">
+                <label for="first_name">Nom</label>
+            </div>
+            <div class="input-field">
+                <input id="last_name" type="text" class="validate" ng-model="userToEdit.profile.name">
+                <label for="last_name">Prénom</label>
+            </div>
+            <div class="input-field">
+                <input id="email" type="text" class="validate" ng-model="userToEdit.profile.email">
+                <label for="email">email</label>
+            </div>
+            <div class="input-field">
+                <input id="password" type="password" class="validate" ng-model="userToEdit.profile.password">
+                <label for="email">Mot de passe</label>
+            </div>
+
+
+            <p>
+                <input name="group_role" type="radio" id="sportman" value="sportman" ng-model="userToEdit.role"/>
+                <label for="sportman">Sportif</label>
+            </p>
+            <p>
+                <input name="group_role" type="radio" id="coach" value="coach" ng-model="userToEdit.role"/>
+                <label for="coach">Coach</label>
+            </p>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+               ng-click="updateUser();">OK</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Annuler</a>
+        </div>
+    </div>
+    <div id="modalAddUser" class="modal">
+        <div class="modal-content">
+            <h4>Creer Utilisateur</h4>
+            <p>
+            <div class="input-field">
+                <input id="first_name_add" type="text" class="validate" ng-model="userToAdd.surname">
+                <label for="first_name_add">Nom</label>
+            </div>
+            <div class="input-field">
+                <input id="last_name_add" type="text" class="validate" ng-model="userToAdd.name">
+                <label for="last_name_add">Prénom</label>
+            </div>
+            <div class="input-field">
+                <input id="email_add" type="text" class="validate" ng-model="userToAdd.email">
+                <label for="email_add">email</label>
+            </div>
+            <div class="input-field">
+                <input id="password_add" type="password" class="validate" ng-model="userToAdd.password">
+                <label for="password_add">Mot de passe</label>
+            </div>
+
+
+            <p>
+                <input name="group_role" type="radio" id="sportman_add" value="sportman" ng-model="userToAdd.role"/>
+                <label for="sportman_add">Sportif</label>
+            </p>
+            <p>
+                <input name="group_role" type="radio" id="coach_add" value="coach" ng-model="userToAdd.role"/>
+                <label for="coach_add">Coach</label>
+            </p>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+               ng-click="addUser();">OK</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Annuler</a>
+        </div>
+    </div>
+    <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modalAddUser"
+       style="position: absolute ; bottom: 30px ; right: 25px;"><i class="material-icons">add</i></a>
+</div>
+
+<script>
+
+
+    $(document).ready(function () {
+        $('ul.tabs').tabs();
+    });
+    $('.modal-trigger').leanModal();
+
+</script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

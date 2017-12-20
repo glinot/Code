@@ -1,0 +1,21 @@
+{
+  "name": "GroupTimetable",
+  "authors": [
+    "Grégoire LINOT <gregoire.linot@insa-rennes.fr>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "WTFPL",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "materialize": "^0.98.0"
+  }
+}

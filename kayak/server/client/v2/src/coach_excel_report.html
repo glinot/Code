@@ -1,0 +1,19 @@
+<div class="container" ng-controller="coachExcelReport">
+
+    <div class="row" ng-hide="yearsSelect.years.length==0">
+        <div input-field>
+            <select class="" ng-model="yearsSelect.year" ng-change="yearSelected=true" material-select watch>
+                <option ng-repeat="value in yearsSelect.years">{{value}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row left-align animated bounceIn"  ng-hide="yearsSelect.years.length==0">
+        <a class="waves-effect waves-light btn" ng-click="downloadExcel();">Télécharger</a>
+    </div>
+
+    <div class="row center-align orange-text animated fadeIn" ng-show="yearsSelect.years.length==0">
+        <h5>Vous n'avez pas encore d'entrainements !</h5>
+
+    </div>
+
+</div>

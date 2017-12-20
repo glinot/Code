@@ -1,0 +1,242 @@
+<!-- ========================
+  Sportif : ses statistiques.
+========================= -->
+
+<head>
+    <link rel="stylesheet" href="./css/chartist.min.css"/>
+    <script src="./js/chartist.min.js"/>
+</head>
+<div class="text-center">
+    <h1>Mes Stats</h1>
+</div>
+<div class="row">
+    <div id="tr-week-overview" class="col-sm-4 week-overview">
+
+        <div class="wrapper-stats box" state-index="2">
+
+            <h4 class="text-center">Cette semaine</h4>
+            <div class="week-stats"></div>
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <td>Nombre d'entrainements</td>
+                    <td class="overview-training-number">5</td>
+                </tr>
+                <tr>
+                    <td>Durée</td>
+                    <td class="overview-training-duree">30h00</td>
+                </tr>
+                <tr>
+                    <td>Kms</td>
+                    <td class="overview-training-distance">10km</td>
+                </tr>
+                <tr>
+                    <td>Ressenti</td>
+                    <td class="overview-training-ressenti"><img height="90px" src="./img/smiley1.png"/></td>
+                </tr>
+                <tr>
+                    <td>Assiduité <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+
+                    </td>
+                    <td>
+                        <div class="progress overview-training-assiduite">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:0% ; background-color: red">
+                                <span class="sr-only">70% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="col-sm-4 month-overview">
+
+        <div class="wrapper-stats box" state-index="1" id="tr-month-overview">
+
+            <h4 class="text-center">Ce mois-ci</h4>
+            <div class="month-stats"></div>
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <td>Nombre d'entrainements</td>
+                    <td class="overview-training-number">5</td>
+                </tr>
+                <tr>
+                    <td>Durée</td>
+                    <td class="overview-training-duree">30h00</td>
+                </tr>
+                <tr>
+                    <td>Kms</td>
+                    <td class="overview-training-distance">10km</td>
+                </tr>
+                <tr>
+                    <td>Ressenti</td>
+                    <td class="overview-training-ressenti"><img height="90px" src="./img/smiley5.png"/></td>
+                </tr>
+                <tr>
+                    <td>Assiduité <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+
+                    </td>
+                    <td>
+                        <div class="progress overview-training-assiduite">
+                            <div class="progress-bar " role="progressbar" aria-valuenow="70"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:0% ; background-color: red">
+                                <span class="sr-only">70% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="col-sm-4 year-overview">
+
+        <div class="wrapper-stats box" state-index="0" id="tr-year-overview">
+
+            <h4 class="text-center">Cette année</h4>
+            <div class="year-stats"></div>
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <td>Nombre d'entrainements</td>
+                    <td class="overview-training-number">5</td>
+                </tr>
+                <tr>
+                    <td>Durée</td>
+                    <td class="overview-training-duree">30h00</td>
+                </tr>
+                <tr>
+                    <td>Kms</td>
+                    <td class="overview-training-distance">10km</td>
+                </tr>
+                <tr>
+                    <td>Ressenti</td>
+                    <td class="overview-training-ressenti"><img height="90px" src="./img/smiley3.png"/></td>
+                </tr>
+                <tr>
+                    <td>Assiduité <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+
+                    </td>
+                    <td>
+                        <div class="progress overview-training-assiduite">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:0% ; background-color: red">
+                                <span class="sr-only">70% Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div id="stats-control " class="box row">
+
+    <div class="text-center selector-wide">
+
+        <i id="tr-stats-previous" class="fa fa-chevron-left stats-previous" aria-hidden="true"></i>
+
+        <h3 class="text-state">
+            2016
+        </h3>
+        <i id="tr-stats-next" class="fa fa-chevron-right stats-next" aria-hidden="true"></i>
+    </div>
+</div>
+
+
+<!-- Training times-->
+<div class="row box stats-detail big-stats" id="training-method-time">
+    <h2 class="text-center">Temps d'entrainement</h2>
+    <div class="training-time"></div>
+    <div class="curve-selector-wrapper">
+        <table class="curve-selector">
+            <tbody>
+            <tr class="model model-selector-curve">
+                <td>
+                    <div class="custom-checkbox active">
+                        <i class="fa fa-2x fa-check-square-o on" aria-hidden="true"></i>
+                        <i class="fa fa-2x fa-square-o off" aria-hidden="true"></i>
+                    </div>
+                </td>
+                <td class="selector-name">
+                    Bateau
+                </td>
+                <td>
+                    <div class="color-line"></div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tr-bottom-training-time"></div>
+</div>
+
+<!-- Training Methods percentages-->
+
+<div class="row box stats-detail big-stats">
+    <h2 class="text-center">Types</h2>
+    <div class="training-methods-stats"></div>
+</div>
+
+<div class="row box stats-detail big-stats" id="training-procede-time">
+    <h2 class="text-center">Temps d'entrainement</h2>
+    <div class="training-time"></div>
+    <div class="curve-selector-wrapper">
+        <table class="curve-selector">
+            <tbody>
+            <tr class="model model-selector-curve">
+                <td>
+                    <div class="custom-checkbox active">
+                        <i class="fa fa-2x fa-check-square-o on" aria-hidden="true"></i>
+                        <i class="fa fa-2x fa-square-o off" aria-hidden="true"></i>
+                    </div>
+                </td>
+                <td class="selector-name">
+                    Bateau
+                </td>
+                <td>
+                    <div class="color-line"></div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+<div class="row box stats-detail big-stats">
+    <h2 class="text-center">Procédés</h2>
+    <div class="training-procede-stats"></div>
+</div>
+
+
+
+<div class="row box stats-detail big-stats model health-curve" id="model-health">
+    <h2 class="text-center health-feature-label">Temps d'entrainement</h2>
+    <div class="health-feature-stats"></div>
+</div>
+<div id="health-container">
+
+</div>
+
+<!-- -->
+<script src="./js/coach_sportmanstats.js"></script>
+<link rel="stylesheet" href="./css/sportman_stats.css"/>
+<link rel="stylesheet" href="./css/colors-stats.css"/>

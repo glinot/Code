@@ -1,0 +1,268 @@
+<!-- ==============================
+  Coach & Sportif : page de profil.
+=============================== -->
+
+<div class="jumbotron profile-header text-center" id="wall_picture">
+    <div>
+        <a>
+            <img id="profile_picture" class="img-circle img-profile-xs" src=""
+            />
+        </a>
+    </div>
+    <div>
+        <p id="name-profile" class="text-capitalize">
+            Hugues Marandeau</p>
+
+    </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="sportman-feature admin-feature coach-feature" role="presentation" class="active"><a data-toggle="tab" id="tr-basic" href="#carte_id">Carte
+        d'identité</a></li>
+    <li class="sportman-feature" role="presentation"><a data-toggle="tab" id="tr-sante" href="#sante">Suivi Santé</a></li>
+    <!--li class="sportman-feature" role="presentation"><a data-toggle="tab" href="#suivi_materiel">Suivi matériel</a></li>
+    <li class="sportman-feature" role="presentation"><a data-toggle="tab" href="#suivi_competition">Suivi
+        compétition</a></li>
+    <li class="sportman-feature" role="presentation"><a data-toggle="tab" href="#palmares">Palmarès</a></li-->
+</ul>
+
+<div class="tab-content">
+
+    <!-- CARTE IDENTITE -->
+    <div id="carte_id" class="tab-pane fade in active ">
+        <table class="table ">
+            <tbody>
+
+            <tr class="sportman-feature">
+                <td>Entraîneur club</td>
+                <td id="entraineur_club"></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil"></span>modifier</td>
+            </tr>
+
+            <tr class="sportman-feature">
+                <td>Entraîneur EQF</td>
+                <td id="entraineur_eqf"></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil"></span>modifier</td>
+            </tr>
+
+            <tr data-type="email" api-post="/api/profile/email" class="admin-feature sportman-feature coach-feature">
+                <td>Email:</td>
+                <td id="email">hugues.marandeau@insa-rennes.fr</td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil"></span>modifier</td>
+            </tr>
+
+            <tr data-type="password" api-post="/api/profile/password"
+                class="admin-feature sportman-feature coach-feature">
+                <td>Mot de passe:</td>
+                <td id="password">********</td>
+                <td class="modify" id="tr-modify-password"><span class="glyphicon glyphicon-pencil"></span>modifier</td>
+            </tr>
+
+            <tr class="sportman-feature">
+                <td>Téléphone</td>
+                <td id="telephone"></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil"></span>modifier</td>
+            </tr>
+
+            <tr class="sportman-feature">
+                <td>Formation</td>
+                <td id="formation"></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil"></span>modifier</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SUIVI SANTE -->
+    <div id="sante" class="tab-pane fade sportman-feature">
+        <table class="table table-health">
+            <tbody>
+
+            <tr class="stats-feature" api-post="/api/profile/health/weight" api-get="/api/stats/weight"  data-type="default">
+                <td class="feature-name">Poids</td>
+                <td><a id="valeur_poids">58kg</a></td>
+                <td class="modify-stats"><span
+                        class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr class="stats-feature" api-post="/api/profile/health/height" api-get="/api/stats/height"  data-type="default">
+                <td class="feature-name">Taille</td>
+                <td><a id="valeur_taille"></a></td>
+                <td class="modify-stats"><span
+                        class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr class="stats-feature" api-post="/api/profile/health/fat_percentage" api-get="/api/stats/fat_percentage"  data-type="default">
+                <td class="feature-name">Pourcentage graisse</td>
+                <td><a id="valeur_mg">8%</a></td>
+                <td class="modify-stats"><span
+                        class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr class="stats-feature" api-post="/api/profile/health/hr_standing" api-get="/api/stats/hr_standing"  data-type="default">
+                <td class="feature-name">FC au repos</td>
+                <td><a id="fc_repos"></a></td>
+                <td class="modify-stats"><span
+                        class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr class="stats-feature" api-post="/api/profile/health/hrv_test" api-get="/api/stats/hrv_test"  data-type="default">
+                <td api-post="hrv_test" class="feature-name">Test HRV</td>
+                <td><a id="test_hrv"></a></td>
+                <td class="modify-stats"><span
+                        class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <!--tr class="stats-feature" api-post="/api/profile/health/fatigue_index" api-get="/api/stats/fatigue_index"  data-type="default">
+                <td api-post="fatigue-rate" class="feature-name">Indice de fatigue</td>
+                <td><a id="indice_fatigue"></a></td>
+                <td class="modify-stats"><span
+                        class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr-->
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- SUIVI MATERIEL -->
+
+    <!--div id="suivi_materiel" class="tab-pane fade sportman-feature">
+        <table class="table table-health">
+            <tbody>
+            BATEAU
+            <tr>
+                <td>Modele</td>
+                <td><a id="modele_bateau"></a></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr>
+                <td>Taille avant</td>
+                <td><a id="taille_avant"></a></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr>
+                <td>Taille arrière</td>
+                <td><a id="taille_arriere"></a></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <table class="table table-health sportman-feature">
+            <tbody>
+            PAGAIE
+            <tr>
+                <td>Modele</td>
+                <td><a id="modele_pagaie"></a></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            <tr>
+                <td>Taille</td>
+                <td><a id="taille_pagaie"></a></td>
+                <td class="modify"><span class="glyphicon glyphicon-pencil profile-item-modify time-feature"></span>modifier
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div-->
+
+    <!-- SUIVI COMPETITION -->
+    <!--div id="suivi_competition" class="tab-pane fade">
+        <table class="table table-health">
+        </table>
+    </div-->
+
+    <!-- SUIVI PALMARES -->
+    <!--div id="palmares" class="tab-pane fade">
+        <table class="table table-health">
+        </table>
+    </div>
+
+    <div id="medaille" class="tab-pane fade">
+
+    </div-->
+
+</div>
+</div>
+
+
+
+<!-- --------MODAL -------- -->
+
+
+<div class="modal fade" id="modify-feature" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="tr-update-password">
+                <div class="form-group">
+                    <label class="feature-name">-</label>
+                    <input type="text" class="form-control" id="modify-value">
+                </div>
+                <p id="error-message"></p>
+            </div>
+            <div class="modal-footer">
+
+                <p class="btn btn-primary" id="submit-modify">OK</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="photo_changer_wrapper">
+
+    <div id="overlay"></div>
+    <div class="photo_changer">
+        <canvas width="500" height="200" id="canvas"></canvas>
+            <input type="file" class="upload" id="input"/>
+        <canvas id="canvas_cropped"></canvas>
+
+    </div>
+</div>
+
+
+
+<div class="croppie-wrapper row last-row">
+    <div  id="croppie">
+    </div>
+    <button type="button" class="btn btn-block btn-success "id="upload-result">Upload</button>
+    <button type="button" class="btn btn-block btn-danger" id="dimiss-result">Cancel</button>
+</div>
+
+
+
+<script src="./js/tracking-min.js"></script>
+<script src="./js/data/face-min.js"></script>
+<link rel="stylesheet" href="./css/croppie.css" />
+<script src="./js/croppie.min.js"></script>
+<script>
+
+</script>
+
+<link rel="stylesheet" href="./css/chartist.min.css"/>
+<script src="./js/chartist.min.js"/>
+<script type="text/javascript" src="./js/profile.js"/>
+<link rel="stylesheet" href="./css/profile.css"/>

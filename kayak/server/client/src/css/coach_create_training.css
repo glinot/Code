@@ -1,0 +1,9 @@
+.has-error .status-message{
+    color : #ff5c4f;
+}
+.has-success .status-message{
+    color : #2ad67d;
+}
+.has-warning .status-message{
+    color: #ffc35c;
+}

@@ -1,0 +1,200 @@
+/*
+FONTS
+
+*/
+
+/*--GLOBAL--*/
+
+.clickable {
+    cursor: pointer;
+}
+
+*[ng-click]{
+    cursor: pointer;
+
+    /*Unselectable */
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+
+}
+
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-28 {
+    font-size: 28px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/*custom*/
+.profile {
+    padding: 30px;
+    background-size: cover;
+}
+
+.profile > .user {
+    line-height: 0px;
+}
+
+.profile > img {
+    border: solid #e3f2fd 3px;
+}
+
+.profile-image {
+    width: 200px;
+    border: solid #e3f2fd 3px;
+}
+
+.box-info {
+    padding: 30px;
+}
+
+.box-info .name {
+    font-size: 35px;
+    padding: 10px;
+
+}
+
+/*Training List*/
+.user-item .secondary-content > i.show_hover,
+.training-item .secondary-content {
+    display: none;
+}
+
+.user-item:hover .secondary-content > .show_hover,
+.training-item:hover .secondary-content {
+    display: block;
+}
+.user-item .secondary-content > i.hide_hover{
+    display: block;
+}
+
+.user-item:hover .secondary-content > .hide_hover{
+    display: none;
+}
+
+.training-item .title {
+    font-weight: 500;
+    font-size: large;
+}
+
+/*Star rating*/
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+}
+
+ul.rating {
+    display: inline-block;
+}
+
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.starsRatingBlock {
+    padding: 20px;
+}
+
+.star-icon:hover {
+    font-size: 50px;
+}
+
+/*Patch lmaterilize*/
+.top-row {
+    padding-top: 10px;
+}
+
+/*--------STATS-------*/
+
+.overview {
+    margin-top: 10px;
+}
+
+.overview .title {
+    font-size: 20px;
+}
+
+.simple-graph .ct-chart .ct-point {
+    display: none;
+}
+
+.simple-graph .ct-chart .ct-line {
+    stroke: #12beff;
+}
+
+.simple-graph .ct-label {
+    font-size: px;
+}
+
+/*Date picker*/
+
+.month-picker .picker__table {
+    display: none;
+}
+
+.collection-item .title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* PROFILE COACH SIDE */
+.middle-text {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+
+
+
+/*------GOOGLE LOGIN--------*/
+
+

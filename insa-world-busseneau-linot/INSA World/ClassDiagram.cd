@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="INSAWorld.Action">
+    <Position X="1.75" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Action\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.AttackAction">
+    <Position X="3" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAIEAABAABAAAAAAAAAAgCAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Action\AttackAction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Attacker" />
+      <Property Name="InitialAttackerPosition" />
+      <Property Name="Defender" />
+      <Property Name="Loser" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="INSAWorld.MoveAction">
+    <Position X="0.75" Y="9.25" Width="1.5" />
+    <AssociationLine Name="Position" Type="INSAWorld.Position">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.041" Y="-0.257" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAgIAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Action\MoveAction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Unit" />
+      <Property Name="Position" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="INSAWorld.NewGameBuilder" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="5.75" Width="3.25" />
+    <AssociationLine Name="MapStrategy" Type="INSAWorld.MapStrategy" ManuallyRouted="true">
+      <Path>
+        <Point X="20.438" Y="5.75" />
+        <Point X="20.438" Y="1.625" />
+        <Point X="17.5" Y="1.625" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAAEAAAAAAIAAAAEAAAEAEABQAAgEAAAAAAAAgAEAA=</HashCode>
+      <FileName>Model\Game\Builder\NewGameBuilder.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MapStrategy" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWorld.SavedGameBuilder" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAoEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Game\Builder\SavedGameBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWorld.Game">
+    <Position X="10.25" Y="4" Width="2.75" />
+    <AssociationLine Name="history" Type="INSAWorld.Action">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.266" Y="0.404" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="History" Type="INSAWorld.Action" FixedFromPoint="true">
+      <Path>
+        <Point X="10.25" Y="7.117" />
+        <Point X="3.75" Y="7.117" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.245" Y="-0.367" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAhIQAIAAAAAAEAiAAAAoAACAAAACAgAAAgE=</HashCode>
+      <FileName>Model\Game\Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Map" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="history" />
+      <Property Name="Players" />
+      <Property Name="History" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="INSAWorld.Map">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <AssociationLine Name="grid" Type="INSAWorld.ITile" FixedFromPoint="true">
+      <Path>
+        <Point X="11" Y="1.125" />
+        <Point X="7.75" Y="1.125" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Map.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="grid" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="INSAWorld.Position">
+    <Position X="2.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAYQA=</HashCode>
+      <FileName>Model\Map\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.DemoMap">
+    <Position X="16" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Strategy\DemoMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.MapStrategy">
+    <Position X="16" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Strategy\MapStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.SmallMap">
+    <Position X="18" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Strategy\SmallMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.StandardMap">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Strategy\StandardMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.Desert" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Tile\Desert.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWorld.Plain" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Tile\Plain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWorld.Swamp" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Tile\Swamp.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWorld.TileFactory">
+    <Position X="6" Y="3.75" Width="1.75" />
+    <AssociationLine Name="Instance" Type="INSAWorld.TileFactory">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.046" Y="0.324" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="swamp" Type="INSAWorld.Swamp" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="4.438" />
+        <Point X="4.25" Y="4.438" />
+        <Point X="4.25" Y="3.118" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="volcano" Type="INSAWorld.Volcano" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="4.438" />
+        <Point X="9.469" Y="4.438" />
+        <Point X="9.469" Y="3.118" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAQACAAEAEBCAABAQgAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Tile\TileFactory.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="desert" />
+      <Field Name="plain" />
+      <Field Name="swamp" />
+      <Field Name="volcano" />
+      <Property Name="Instance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="INSAWorld.Volcano" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Tile\Volcano.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWorld.Player">
+    <Position X="11.75" Y="9" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAAAAIAAAAAAAAAAAAAAUAAAAQAAAAEAAAAAAAAgA=</HashCode>
+      <FileName>Model\Player\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Race" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="units" />
+      <Property Name="Units" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="INSAWorld.Centaur">
+    <Position X="13" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player\Race\Centaur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.Cerberus">
+    <Position X="15.5" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player\Race\Cerberus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.Cyclops">
+    <Position X="18" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player\Race\Cyclops.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.Race">
+    <Position X="15.5" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAIgACAEAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Model\Player\Race\Race.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.CentaurWarrior">
+    <Position X="4.5" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player\Unit\CentaurWarrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.CerberusWarrior">
+    <Position X="7" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player\Unit\CerberusWarrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.CyclopsWarrior">
+    <Position X="9.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player\Unit\CyclopsWarrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWorld.Unit">
+    <Position X="6.75" Y="8.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="INSAWorld.Unit.PathItem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Model\Player\Unit\Unit.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIAiABAQAAQAEAgAEAAMSAIAACBAAAACAAAAQAAAAo=</HashCode>
+      <FileName>Model\Player\Unit\Unit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Position" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="INSAWorld.IGameBuilder">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Game\Builder\IGameBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="INSAWorld.ITile">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Map\Tile\ITile.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

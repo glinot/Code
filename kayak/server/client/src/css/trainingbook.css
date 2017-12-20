@@ -1,0 +1,63 @@
+a {
+    color: black;
+}
+
+.description-text > p {
+    display: inline-block;
+}
+
+/*Il y a une couleur par moyen d’entraînement (Bateau = bleu, cardio = vert, Renforcement musculaire = gris,
+compétition & test = rouge, Soins = Orange, Stratégie / projet = noir)
+*/
+.button-more-training-row > button {
+    width: 98%;
+
+}
+
+.button-more-training-row  .btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: black
+}
+
+.button-more-training-row  .btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.button-more-training-row  .btn-primary {
+    background: #f0ecf0;
+    color: #b6b6b6;
+}
+
+.button-more-training-row  .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #dbdada;
+}
+
+.button-more-training-row  .btn-primary:active, .btn-primary.active {
+    background: #c1c3c4;
+    box-shadow: none;
+}
+
+
+/*LEFT box*/
+
+
+.box{
+    display: inline-block;
+    align : right;
+}
+.description-text{
+    display: inline-block;
+}
+.training-container{
+    width : 100%;
+}
+.globaltype{
+    height: 30px;
+}
+.globaltype{
+    margin-left: 30px;
+}

@@ -1,0 +1,91 @@
+<div ng-controller="GroupCrtl">
+
+
+    <div class="row animated fadeInDown" ng-hide="showFreeTime">
+        <div class="col s12">
+
+            <ul class="collapsible" data-collapsible="accordion">
+                <li ng-repeat="g in groups">
+                    <div class="collapsible-header">{{g.name}}</div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="collection-item" ng-repeat="u in g.full_users">{{u.name}} {{u.surname}}</li>
+                        </ul>
+                        <a class="waves-effect waves-light btn red" ng-click="deleteGroup(g)">Delete Group</a>
+                        <a class="waves-effect waves-light btn blue" ng-click="findFreeTime(g)">Find free time</a>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row animated fadeInDown" ng-show="showFreeTime">
+        <div class="col s1 offset-s11 clickable" ng-click="showFreeTime=false">
+            <i class="material-icons medium grey-text">close</i>
+        </div>
+        <div class="col s12" ng-repeat="(k,v) in freeSpots">
+            <h6>{{k}}</h6>
+            <div class="collection">
+                <a href="#!" class="collection-item" ng-repeat="s in freeSpots[k]">{{formatCave(s)}}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="s1 col left-align" ng-click="decWeek()"><i class="medium clickable material-icons grey-text text-lighten-2">chevron_left</i></div>
+            <div class="s1 offset-s10 col right-align" ng-click="incWeek()"><i class="medium clickable material-icons grey-text text-lighten-2">chevron_right</i></div>
+        </div>
+    </div>
+
+
+
+    <a class="btn-floating btn-large waves-effect waves-light red" ng-hide="showFreeTime"
+       style="position: absolute; bottom: 30px ; right: 50px;" href="#modal1"><i
+            class="material-icons"
+    >add</i></a>
+
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Create a group</h4>
+            <p>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="group_name" type="text" class="validate" ng-model="groupName">
+                    <label for="group_name">Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="user_name" type="text" class="validate" ng-model="search">
+                    <label for="user_name">Search users</label>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="chip animated bounceIn" ng-repeat="u in getSelectedUsers();">
+                    <img ng-src="{{u.picture}}">
+                    {{u.name}} {{u.surname}}
+                    <i class="close material-icons" ng-click="toggleSelectUser(u);">close</i>
+                </div>
+            </div>
+            <div class="col s12">
+                <ul class="collection">
+                    <li class=" clickable collection-item avatar animated fadeIn"
+                        ng-class="{'blue lighten-1 white-text' : u.selected}"
+                        ng-repeat="u in users | filter:search | limitTo:3"
+                        ng-click="toggleSelectUser(u);">
+                        <img ng-src="{{u.picture}}" alt="" class="circle">
+                        <span class="title">{{u.name}} {{u.surname}}</span>
+                    </li>
+                </ul>
+            </div>
+
+
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"
+               ng-click="cancel();">Cancel</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="createGroup();">Create</a>
+        </div>
+    </div>
+</div>

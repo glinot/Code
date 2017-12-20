@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="INSAWorld.Views.Home.ReplayGameControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:INSAWorld.ViewModel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <materialDesign:Card Grid.Row="0">
+            <StackPanel Margin="16">
+                <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center">
+                    Replay a game
+                </TextBlock>
+
+                <ComboBox Margin="0 8 0 0" ItemsSource="{Binding ReplayFilenames}" SelectedItem="{Binding SelectedReplay}" materialDesign:HintAssist.Hint="Select a replay" />
+
+                <Button Margin="0 16 0 0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding SelectReplayCommand}">
+                    REPLAY
+                </Button>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <Button Grid.Row="1" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="0 15 0 0" Command="{Binding BackCommand}">
+            BACK
+        </Button>
+    </Grid>
+</UserControl>

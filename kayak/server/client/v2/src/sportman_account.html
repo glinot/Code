@@ -1,0 +1,223 @@
+<div class="container" ng-controller="sportmanAccountCrtl">
+
+
+    <div ng-show="isEditingProfilePicture">
+        <div class="row">
+            <div ng-hide="true">Select an image file: <input type="file" id="fileInput"/></div>
+
+            <div class="center-align">
+                <img id="image" height="500" ng-src="{{myImage}}" sb-load="imageLoaded();">
+            </div>
+        </div>
+
+
+        <div class="row center-align animated bounceIn" ng-show="uploadReady">
+            <a class="waves-effect waves-light btn grey black-text white-text text-darken-1"
+               ng-click="cancelUploadImage();">Annuler</a>
+            <a class="waves-effect waves-light btn blue lighten-1 white-text" ng-click="uploadImage();">Upload</a>
+        </div>
+
+
+        <div class="row center-align" ng-show="loadingImage">
+
+
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+
+        </div>
+    </div>
+    <div ng-hide="isEditingProfilePicture">
+
+        <!-- DEBUT PHOTO ET NOM PROFIL -->
+        <div class="row center-align box-info">
+            <div class="col s12">
+                <img class="responsive-img circle profile-image magictime spaceInLeft" ng-src="{{me.pictures.profile}}"
+                     ng-click="editProfilePicture();">
+            </div>
+            <div class="row">
+                <h1 class="name">{{me.name}} {{me.surname}}</h1>
+            </div>
+        </div>
+
+
+
+        <!-- FIN PHOTO ET NOM PROFIL -->
+
+        <!-- BOUTON EDITER -->
+        <div class="row center-align">
+            <a class="waves-effect waves-light btn animated fadeIn" ng-hide="modifying" ng-click="modifying=true"><i
+                    class="material-icons left animated bounceIn">edit</i>Editer</a>
+            <a class="waves-effect waves-light btn animated fadeIn " ng-show="modifying"
+               ng-click="save()">Sauvegarder</a>
+            <a class="waves-effect waves-light btn animated fadeIn " ng-show="modifying" ng-click="cancel()">Annuler</a>
+        </div>
+        <!-- FIN BOUTON EDITER -->
+
+        <!-- INFORMATIONS -->
+        <div class="row">
+            <div class="row">
+
+                <!-- DEBUT MENU -->
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a href="#id_card">Carte d'identité</a></li>
+                        <li class="tab col s3"><a href="#health">Santé</a></li>
+                        <li class="tab col s3"><a href="#materiel">Matériel</a></li>
+                        <li class="tab col s3 "><a href="#account">Compte KaNote</a></li>
+                    </ul>
+                </div>
+                <!-- FIN MENU -->
+
+                <!-- DEBUT CARTE IDENTITE -->
+                <div id="id_card" class="col s12 ">
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Nom</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.surname">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Prénom</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.name">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Entraineur EQF</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.coach.eqf">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Entraineur Club</b> :</div>
+
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.coach.club">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Telephone</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.phone">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Formation</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.studies">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Nom responsable formation</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.resp_studies">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Contact responsable formation</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.contact_studies">
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN CARTE IDENTITE -->
+
+                <!-- DEBUT SANTE -->
+                <div id="health" class="col s12">
+
+                    <div class="row valign-wrapper" ng-repeat="item in healthItems">
+                        <div class="col s12 m2"><b>{{$parent.translate(item)}}</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" id="disabled" type="text"
+                                   class="validateDISABLED" ng-model="me.health[item]"
+                                   ng-change="modified.health=true"
+                            >
+                        </div>
+                    </div>
+
+                </div>
+                <!-- FIN SANTE -->
+
+                <!-- DEBUT INFORMATIONS COMPTE -->
+                <div id="account" class="col s12">
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Email(GMAIL)</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" type="text"
+                                   class="validateDISABLED" ng-model="me.email" ng-change="modified.email=true">
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s12 m2"><b>Mot de passe</b> :</div>
+                        <div class="col s12 m10 input-field">
+                            <input ng-disabled="!modifying" ng-hide="modifying" type="password"
+                                   class="validateDISABLED" value="password stars">
+                            <input ng-disabled="!modifying" ng-show="modifying" type="password"
+                                   class="validateDISABLED" ng-model="password.old" ng-change="modified.password=true">
+                            <input ng-disabled="!modifying" ng-show="modifying" type="password"
+                                   class="validateDISABLED" ng-model="password.new" ng-change="modified.password=true">
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN INFORMATIONS COMPTE -->
+
+
+                <!-- DEBUT MATERIEL -->
+                <div id="materiel" class="col s12">
+                    <div ng-repeat="item in kayakMaterialItems">
+                        <div class="row center-align grey-text text-lighten-1"><h5>{{item.name}}</h5></div>
+
+                        <div class="row valign-wrapper" ng-repeat="subItem  in item.items">
+                            <div class="col s12 m2"><b>{{subItem.name}}</b> :</div>
+                            <div class="col s12 m10 input-field">
+                                <input ng-disabled="!modifying" type="text"
+                                       ng-model="me[item.path][subItem.path]"
+                                       ng-change="subItem.modified = true;modified.kayak_items = true;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- FIN MATERIEL -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('ul.tabs').tabs();
+    });
+    $(document).ready(function () {
+        Materialize.updateTextFields();
+    });
+</script>
+
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-73214531-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

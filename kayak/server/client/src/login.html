@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<!-- [HEAD] Contient les principales informations nécessaires au fonctionnement de la page -->
+<head>
+    <link rel="manifest" href="/v2/chrome_app/manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <!-- Défini l'encodage de la page HTML -->
+    <meta charset="utf-8">
+    <!-- Permet de régler d'éventuels soucis de dézoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Nom de la page web (visible en haut de l'écran sur l'onglet) -->
+    <title>KaNot</title>
+    <!-- Fichiers CSS utilisés -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <!-- Ne modifier que ceux-ci -->
+    <link href="css/boostrap-custom.css" rel="stylesheet">
+    <link href="./css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style-youtubebg.css">
+    <link href="./css/bootstrap-material-design.min.css" rel="stylesheet">
+    <style>
+        #login-register,#login-submit{
+            color: white;
+            text-shadow: 0 0px 0 black;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="background"></div>
+</div>
+<div class="background-overlay"></div>
+<div class="container-fluid">
+
+
+    <div class="row form-login">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            <h1 class="app-title text-center">KaNote</h1>
+
+            <div group="register" class="form-group">
+                <label class="label-control">Prénom</label>
+                <div>
+                        <input id="register-surname" class="form-control login-control">
+                </div>
+            </div>
+            <div group="register" class="form-group">
+                <label class="label-control">Nom : </label>
+                <div>
+                    <input id="register-name" class="form-control login-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-control">Email:</label>
+                <input type="email" class="form-control login-control" id="username"  placeholder="@gmail.com">
+            </div>
+            <div class="form-group">
+                <label class="label-control">Mot de passe:</label>
+                <div>
+                    <input type="password" class="form-control login-control" id="password" >
+                </div>
+            </div>
+            <div group="register" class="form-group">
+                <label class="label-control">Role</label>
+                <select class="form-control login-control" id="role-select">
+                    <option>sportman</option>
+                    <option>coach</option>
+                </select>
+            </div>
+
+            <div id="last-error"></div>
+            <button group="login" id="login-submit" class="btn btn-primary button-connect">Connexion</button>
+            <button group="login"id="login-register" class="btn btn-default button-connect">S'enregistrer</button>
+            <button group="register"id="register-register" class="btn btn-primary button-connect">Soumettre</button>
+            <button group="register"id="register-login" class="btn btn-default button-connect">S'identifier</button>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="info-login" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="titre"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+</body>
+
+<!-- /!\ Scripts utilisés, NE PAS LES MODIFIER /!\ -->
+<script src="js/jquery.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.youtubebackground.js"></script>
+<!-- Script propre à la page, on peut le modifier -->
+<script src="js/login.js"></script>
+<script src="js/global.js"></script>
+
+</html>

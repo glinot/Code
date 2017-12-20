@@ -1,0 +1,114 @@
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.table-health .profile-item-modify {
+    visibility: hidden;
+}
+
+.table-health tr:hover .profile-item-modify {
+    visibility: visible;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+.stats-feature{
+    cursor: pointer;
+}
+.modal {
+    text-align: center;
+    padding: 0!important;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+#error-message{
+    color: red
+}
+
+
+
+.profile-image-wrapper{
+    height: 200px;
+    width: 200px;
+    position: relative;
+}
+.profile-image-wrapper > img{
+    height: 200px;
+}
+
+.profile-image-wrapper > .photo-overlay{
+    position: absolute;
+    padding: 0 auto;
+
+    color: white;
+    display: none;
+}
+.profile-image-wrapper:hover > .photo-overlay{
+    display: block;
+}
+.photo_changer > canvas{
+
+}
+
+
+
+#profile_picture{
+    cursor: pointer;
+}
+
+
+
+/*---------------------Controller Photo Changer------------------------------*/
+#photo_changer_wrapper {
+    display: none;
+    height: 100px;
+}
+
+.photo_changer #input{
+    display: none;
+}
+.photo_changer {
+    width: 700px;
+    height: 300px;
+    position: absolute;
+    top: -50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#overlay {
+    background-color: black;
+    opacity: 0.5;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#image_orig {
+
+}
+.last-row{
+    margin-bottom: 50px;
+}

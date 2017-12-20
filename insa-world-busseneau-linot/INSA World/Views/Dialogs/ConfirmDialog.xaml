@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="INSAWorld.Views.Dialogs.ConfirmDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" FontSize="18">
+            Make sure you saved your game before exiting.
+        </Label>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 16 0 0" HorizontalAlignment="Right">
+            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandParameter="CONFIRM">
+                CONFIRM
+            </Button>
+            
+            <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                CANCEL
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
